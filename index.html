@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投资研究知识库</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+.header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: white; padding: 40px 20px 30px; text-align: center; }
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.header p { font-size: 14px; opacity: 0.8; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+.categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px; }
+.category-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: inherit; display: block; }
+.category-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.category-card .icon { font-size: 36px; margin-bottom: 12px; }
+.category-card h2 { font-size: 20px; margin-bottom: 8px; color: #1a1a2e; }
+.category-card p { font-size: 14px; color: #666; }
+.category-card .count { display: inline-block; background: #e8f4f8; color: #0f3460; padding: 2px 10px; border-radius: 12px; font-size: 12px; margin-top: 10px; }
+.latest-section { margin-top: 30px; }
+.latest-section h2 { font-size: 18px; color: #1a1a2e; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e94560; }
+.report-item { background: white; border-radius: 8px; padding: 16px 20px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: inherit; }
+.report-item:hover { background: #fafbfc; }
+.report-item .info h3 { font-size: 15px; color: #1a1a2e; margin-bottom: 4px; }
+.report-item .info .meta { font-size: 12px; color: #999; }
+.report-item .badge { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+.badge-bullish { background: #e8f5e9; color: #2e7d32; }
+.badge-bearish { background: #ffebee; color: #c62828; }
+.badge-neutral { background: #fff3e0; color: #ef6c00; }
+.footer { text-align: center; padding: 30px 20px; color: #999; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>投资研究知识库</h1>
+  <p>AI辅助宏观资产配置研究 | 黄金 / 港美股指数 / 比特币 / 美股</p>
+</div>
+
+<div class="container">
+
+  <div class="categories">
+    <a href="gold/index.html" class="category-card">
+      <div class="icon">🥇</div>
+      <h2>黄金 XAUUSD</h2>
+      <p>宏观驱动 + 资金流 + 叙事 + 反身性 + 预期差交易研究</p>
+      <span class="count">1 份报告</span>
+    </a>
+    <a href="crypto/index.html" class="category-card">
+      <div class="icon">₿</div>
+      <h2>比特币 BTC</h2>
+      <p>宏观 + ETF + 链上 + 衍生品 + 市场结构分析</p>
+      <span class="count">待更新</span>
+    </a>
+    <a href="us-stocks/index.html" class="category-card">
+      <div class="icon"></div>
+      <h2>美股科技股</h2>
+      <p>基本面 + 财报 + 估值 + 预期差 + 催化剂分析</p>
+      <span class="count">1 份报告</span>
+    </a>
+    <a href="hk-stocks/index.html" class="category-card">
+      <div class="icon">🌏</div>
+      <h2>港美股指数</h2>
+      <p>S&P 500 / Nasdaq / 恒生指数宏观分析</p>
+      <span class="count">待更新</span>
+    </a>
+  </div>
+
+  <div class="latest-section">
+    <h2>最新报告</h2>
+    <a href="gold/2026-08-18.html" class="report-item">
+      <div class="info">
+        <h3>黄金 XAUUSD 市场研究报告</h3>
+        <span class="meta">2026-08-18 | 评级: Bullish | 价格: $4,415</span>
+      </div>
+      <span class="badge badge-bullish">Bullish</span>
+    </a>
+    <a href="../美股科技股/2026-08-16-Oracle-做多-AI基建超级周期.html" class="report-item" style="opacity:0.5;">
+      <div class="info">
+        <h3>Oracle (ORCL) — AI基础设施超级周期</h3>
+        <span class="meta">2026-08-16 | 评级: Bullish | 买入价: $150.79</span>
+      </div>
+      <span class="badge badge-bullish">Bullish</span>
+    </a>
+  </div>
+
+</div>
+
+<div class="footer">
+  投资研究知识库 | 数据仅供参考，不构成投资建议
+</div>
+
+</body>
+</html>
