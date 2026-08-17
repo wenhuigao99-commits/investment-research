@@ -8,42 +8,126 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.6; font-size: 14px; }
 
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+@keyframes barGrow {
+  from { width: 0; }
+}
+@keyframes barGrowH {
+  from { width: 0; }
+}
+@keyframes needleSweep {
+  from { transform: rotate(-90deg); }
+}
+@keyframes arcDraw {
+  from { stroke-dashoffset: 283; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 4px currentColor; }
+  50% { box-shadow: 0 0 12px currentColor, 0 0 20px currentColor; }
+}
+@keyframes heatFadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(233,69,96,0.2); }
+  50% { border-color: rgba(233,69,96,0.5); }
+}
+
+/* Stagger delays */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+.delay-8 { animation-delay: 0.8s; }
+
+/* Scroll-triggered base state */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Header */
-.header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 20px 16px 16px; position: relative; overflow: hidden; }
-.header::after { content: ''; position: absolute; top: -50%; right: -20%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%); border-radius: 50%; }
+.header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 20px 16px 16px; position: relative; overflow: hidden; animation: fadeIn 0.8s ease-out; }
+.header::after { content: ''; position: absolute; top: -50%; right: -20%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%); border-radius: 50%; animation: pulse 4s ease-in-out infinite; }
 .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .back-link { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px; }
 .date-badge { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 10px; font-size: 11px; color: rgba(255,255,255,0.7); }
-.header h1 { font-size: 18px; color: #fff; margin-bottom: 4px; }
-.header .subtitle { font-size: 11px; color: rgba(255,255,255,0.6); }
+.header h1 { font-size: 18px; color: #fff; margin-bottom: 4px; animation: fadeInUp 0.6s ease-out 0.2s both; }
+.header .subtitle { font-size: 11px; color: rgba(255,255,255,0.6); animation: fadeInUp 0.6s ease-out 0.3s both; }
 
 /* Dashboard Cards */
 .dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px 16px; }
-.dash-card { background: linear-gradient(135deg, #1e1e30 0%, #252540 100%); border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.06); }
+.dash-card { background: linear-gradient(135deg, #1e1e30 0%, #252540 100%); border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.06); animation: fadeInUp 0.5s ease-out both; }
+.dash-card:nth-child(1) { animation-delay: 0.1s; }
+.dash-card:nth-child(2) { animation-delay: 0.2s; }
+.dash-card:nth-child(3) { animation-delay: 0.3s; }
+.dash-card:nth-child(4) { animation-delay: 0.4s; }
+.dash-card:nth-child(5) { animation-delay: 0.5s; }
+.dash-card:nth-child(6) { animation-delay: 0.6s; }
 .dash-card .label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-.dash-card .value { font-size: 22px; font-weight: 700; color: #fff; }
+.dash-card .value { font-size: 22px; font-weight: 700; color: #fff; animation: countUp 0.4s ease-out 0.8s both; }
 .dash-card .change { font-size: 11px; margin-top: 4px; }
 .dash-card .change.up { color: #4caf50; }
 .dash-card .change.down { color: #ef5350; }
 .dash-card.full { grid-column: 1 / -1; }
 
-/* Rating Gauge */
-.gauge-container { text-align: center; padding: 8px 0; }
-.gauge-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin: 8px 0; }
-.gauge-bar .segment { transition: width 0.3s; }
-.gauge-bar .bear-seg { background: #ef5350; }
-.gauge-bar .neutral-seg { background: #ffa726; }
-.gauge-bar .bull-seg { background: #4caf50; }
-.gauge-pointer { font-size: 18px; margin-top: -2px; }
-.gauge-labels { display: flex; justify-content: space-between; font-size: 9px; color: #666; }
+/* SVG Gauge */
+.gauge-svg-container { text-align: center; padding: 10px 0; }
+.gauge-needle { transform-origin: 100px 90px; animation: needleSweep 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both; }
+.gauge-arc-bg { stroke: #2a2a40; }
+.gauge-arc-fill { stroke-dasharray: 283; animation: arcDraw 1.2s ease-out 0.3s both; }
+.gauge-value-text { animation: fadeIn 0.5s ease-out 1.5s both; }
 
 /* Signal Lights */
 .signals { padding: 0 16px; margin-bottom: 12px; }
-.signal-row { display: flex; align-items: center; padding: 10px 14px; background: #1a1a2e; border-radius: 10px; margin-bottom: 6px; }
+.signal-row { display: flex; align-items: center; padding: 10px 14px; background: #1a1a2e; border-radius: 10px; margin-bottom: 6px; animation: slideInLeft 0.4s ease-out both; }
+.signal-row:nth-child(1) { animation-delay: 0.1s; }
+.signal-row:nth-child(2) { animation-delay: 0.2s; }
+.signal-row:nth-child(3) { animation-delay: 0.3s; }
+.signal-row:nth-child(4) { animation-delay: 0.4s; }
+.signal-row:nth-child(5) { animation-delay: 0.5s; }
+.signal-row:nth-child(6) { animation-delay: 0.6s; }
 .signal-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; }
-.signal-dot.green { background: #4caf50; box-shadow: 0 0 6px rgba(76,175,80,0.5); }
-.signal-dot.yellow { background: #ffa726; box-shadow: 0 0 6px rgba(255,167,38,0.5); }
-.signal-dot.red { background: #ef5350; box-shadow: 0 0 6px rgba(239,83,80,0.5); }
+.signal-dot.green { background: #4caf50; color: #4caf50; animation: glowPulse 2s ease-in-out infinite; }
+.signal-dot.yellow { background: #ffa726; color: #ffa726; animation: glowPulse 2.5s ease-in-out infinite; }
+.signal-dot.red { background: #ef5350; color: #ef5350; animation: glowPulse 1.8s ease-in-out infinite; }
 .signal-text { flex: 1; font-size: 13px; }
 .signal-tag { font-size: 10px; padding: 2px 8px; border-radius: 8px; font-weight: 600; }
 .signal-tag.bullish { background: rgba(76,175,80,0.15); color: #4caf50; }
@@ -58,24 +142,26 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 .card-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
 .card-title .icon { width: 20px; height: 20px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; }
 
-/* Comparison Bars */
+/* Comparison Bars - animated */
 .compare-item { margin-bottom: 12px; }
 .compare-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
 .compare-label .name { color: #aaa; }
 .compare-label .vals { color: #fff; font-weight: 600; }
 .compare-bar-bg { height: 6px; background: #2a2a40; border-radius: 3px; position: relative; overflow: hidden; }
-.compare-bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s; }
+.compare-bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.compare-bar-fill.animated { /* width set by JS */ }
 .compare-bar-fill.positive { background: linear-gradient(90deg, #4caf50, #66bb6a); }
 .compare-bar-fill.negative { background: linear-gradient(90deg, #ef5350, #e57373); }
 .compare-bar-fill.neutral { background: linear-gradient(90deg, #ffa726, #ffb74d); }
-.compare-delta { font-size: 10px; color: #888; margin-top: 2px; text-align: right; }
+.compare-delta { font-size: 10px; color: #888; margin-top: 2px; text-align: right; opacity: 0; transition: opacity 0.5s ease 0.8s; }
+.compare-delta.show { opacity: 1; }
 
 /* Scenario Cards */
 .scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.scenario { border-radius: 10px; padding: 12px; text-align: center; }
-.scenario.bull { background: linear-gradient(180deg, rgba(76,175,80,0.12) 0%, rgba(76,175,80,0.04) 100%); border: 1px solid rgba(76,175,80,0.2); }
-.scenario.base { background: linear-gradient(180deg, rgba(255,167,38,0.12) 0%, rgba(255,167,38,0.04) 100%); border: 1px solid rgba(255,167,38,0.2); }
-.scenario.bear { background: linear-gradient(180deg, rgba(239,83,80,0.12) 0%, rgba(239,83,80,0.04) 100%); border: 1px solid rgba(239,83,80,0.2); }
+.scenario { border-radius: 10px; padding: 12px; text-align: center; animation: scaleIn 0.5s ease-out both; }
+.scenario.bull { background: linear-gradient(180deg, rgba(76,175,80,0.12) 0%, rgba(76,175,80,0.04) 100%); border: 1px solid rgba(76,175,80,0.2); animation-delay: 0.3s; }
+.scenario.base { background: linear-gradient(180deg, rgba(255,167,38,0.12) 0%, rgba(255,167,38,0.04) 100%); border: 1px solid rgba(255,167,38,0.2); animation-delay: 0.5s; }
+.scenario.bear { background: linear-gradient(180deg, rgba(239,83,80,0.12) 0%, rgba(239,83,80,0.04) 100%); border: 1px solid rgba(239,83,80,0.2); animation-delay: 0.7s; }
 .scenario .prob { font-size: 24px; font-weight: 800; }
 .scenario.bull .prob { color: #4caf50; }
 .scenario.base .prob { color: #ffa726; }
@@ -84,67 +170,78 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 .scenario .range { font-size: 12px; color: #fff; font-weight: 600; margin: 6px 0; }
 .scenario .trigger { font-size: 10px; color: #999; line-height: 1.4; }
 
-/* Probability Bar */
+/* Probability Bar - animated */
 .prob-bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin: 12px 0; }
-.prob-bar .bull-seg { background: #4caf50; }
-.prob-bar .base-seg { background: #ffa726; }
-.prob-bar .bear-seg { background: #ef5350; }
+.prob-bar .bull-seg { background: #4caf50; width: 0; transition: width 1s ease-out 0.3s; }
+.prob-bar .base-seg { background: #ffa726; width: 0; transition: width 1s ease-out 0.5s; }
+.prob-bar .bear-seg { background: #ef5350; width: 0; transition: width 1s ease-out 0.7s; }
 
 /* Risk Reward Visual */
 .rr-visual { text-align: center; padding: 10px 0; }
 .rr-bar { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 10px 0; }
 .rr-segment { height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
-.rr-down { background: linear-gradient(90deg, #c62828, #ef5350); }
-.rr-current { background: #333; border: 2px solid #ffa726; min-width: 60px; }
-.rr-up { background: linear-gradient(90deg, #4caf50, #2e7d32); }
+.rr-down { background: linear-gradient(90deg, #c62828, #ef5350); animation: fadeIn 0.6s ease-out 0.3s both; }
+.rr-current { background: #333; border: 2px solid #ffa726; min-width: 60px; animation: scaleIn 0.5s ease-out 0.6s both; }
+.rr-up { background: linear-gradient(90deg, #4caf50, #2e7d32); animation: fadeIn 0.6s ease-out 0.9s both; }
 .rr-label { font-size: 11px; color: #888; margin-top: 4px; }
-.rr-verdict { font-size: 14px; font-weight: 700; margin-top: 8px; padding: 6px 16px; border-radius: 8px; display: inline-block; }
+.rr-verdict { font-size: 14px; font-weight: 700; margin-top: 8px; padding: 6px 16px; border-radius: 8px; display: inline-block; animation: fadeInUp 0.5s ease-out 1.2s both; }
 .rr-verdict.bad { background: rgba(239,83,80,0.15); color: #ef5350; }
 .rr-verdict.good { background: rgba(76,175,80,0.15); color: #4caf50; }
 
 /* Catalyst Timeline */
 .catalyst-timeline { position: relative; padding-left: 20px; }
 .catalyst-timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: #2a2a40; }
-.catalyst-item { position: relative; margin-bottom: 14px; }
-.catalyst-dot { position: absolute; left: -18px; top: 4px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid; }
+.timeline-line-fill { position: absolute; left: 6px; top: 0; width: 2px; height: 0; background: linear-gradient(180deg, #4caf50, #ffa726, #ef5350); transition: height 1.5s ease-out; z-index: 1; }
+.catalyst-item { position: relative; margin-bottom: 14px; opacity: 0; transform: translateX(-10px); transition: all 0.4s ease-out; }
+.catalyst-item.visible { opacity: 1; transform: translateX(0); }
+.catalyst-dot { position: absolute; left: -18px; top: 4px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid; z-index: 2; }
 .catalyst-dot.high { border-color: #ef5350; background: rgba(239,83,80,0.3); }
 .catalyst-dot.medium { border-color: #ffa726; background: rgba(255,167,38,0.3); }
 .catalyst-dot.low { border-color: #4caf50; background: rgba(76,175,80,0.3); }
+.catalyst-dot.active { animation: pulse 1.5s ease-in-out infinite; }
 .catalyst-period { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
 .catalyst-name { font-size: 13px; color: #fff; font-weight: 600; }
 .catalyst-impact { font-size: 11px; color: #999; margin-top: 2px; }
 
 /* Monitoring Dashboard */
 .monitor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
-.monitor-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; background: #12121f; border-radius: 8px; }
+.monitor-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; background: #12121f; border-radius: 8px; animation: fadeIn 0.4s ease-out both; }
+.monitor-item:nth-child(1) { animation-delay: 0.1s; }
+.monitor-item:nth-child(2) { animation-delay: 0.15s; }
+.monitor-item:nth-child(3) { animation-delay: 0.2s; }
+.monitor-item:nth-child(4) { animation-delay: 0.25s; }
+.monitor-item:nth-child(5) { animation-delay: 0.3s; }
+.monitor-item:nth-child(6) { animation-delay: 0.35s; }
+.monitor-item:nth-child(7) { animation-delay: 0.4s; }
+.monitor-item:nth-child(8) { animation-delay: 0.45s; }
 .monitor-name { font-size: 11px; color: #aaa; }
 .monitor-val { font-size: 12px; font-weight: 700; color: #fff; }
 .monitor-signal { width: 8px; height: 8px; border-radius: 50%; }
-
-/* Expandable sections */
-.expandable { cursor: pointer; }
-.expandable .expand-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-.expandable.open .expand-content { max-height: 2000px; }
-.expand-toggle { font-size: 11px; color: #666; float: right; }
-.expandable.open .expand-toggle { transform: rotate(180deg); }
+.monitor-signal.bull-dot { background: #4caf50; color: #4caf50; animation: glowPulse 2s ease-in-out infinite; }
+.monitor-signal.neutral-dot { background: #ffa726; color: #ffa726; animation: glowPulse 2.5s ease-in-out infinite; }
+.monitor-signal.bear-dot { background: #ef5350; color: #ef5350; animation: glowPulse 1.8s ease-in-out infinite; }
 
 /* Key insight box */
-.insight-box { background: linear-gradient(135deg, rgba(233,69,96,0.08) 0%, rgba(233,69,96,0.02) 100%); border: 1px solid rgba(233,69,96,0.2); border-radius: 10px; padding: 14px; margin: 10px 0; }
+.insight-box { background: linear-gradient(135deg, rgba(233,69,96,0.08) 0%, rgba(233,69,96,0.02) 100%); border: 1px solid rgba(233,69,96,0.2); border-radius: 10px; padding: 14px; margin: 10px 0; animation: borderGlow 3s ease-in-out infinite; }
 .insight-box .insight-label { font-size: 10px; color: #e94560; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
 .insight-box .insight-text { font-size: 13px; color: #e0e0e0; line-height: 1.6; }
 
 /* Final verdict */
-.verdict-card { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 2px solid rgba(233,69,96,0.3); border-radius: 14px; padding: 20px; margin: 16px 0; }
+.verdict-card { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 2px solid rgba(233,69,96,0.3); border-radius: 14px; padding: 20px; margin: 16px 0; animation: borderGlow 3s ease-in-out infinite; }
 .verdict-rating { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.verdict-badge { padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 800; }
+.verdict-badge { padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 800; animation: scaleIn 0.5s ease-out 0.3s both; }
 .verdict-badge.bullish { background: rgba(76,175,80,0.2); color: #4caf50; border: 1px solid rgba(76,175,80,0.3); }
 .verdict-badge.bearish { background: rgba(239,83,80,0.2); color: #ef5350; border: 1px solid rgba(239,83,80,0.3); }
 .verdict-badge.neutral { background: rgba(255,167,38,0.2); color: #ffa726; border: 1px solid rgba(255,167,38,0.3); }
-.verdict-strategy { font-size: 13px; color: #ccc; margin-bottom: 10px; }
-.verdict-oneliner { font-size: 14px; color: #fff; font-weight: 600; line-height: 1.6; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; }
+.verdict-strategy { font-size: 13px; color: #ccc; margin-bottom: 10px; animation: fadeIn 0.5s ease-out 0.6s both; }
+.verdict-oneliner { font-size: 14px; color: #fff; font-weight: 600; line-height: 1.6; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; animation: fadeInUp 0.5s ease-out 0.9s both; }
 
 /* Driver ranking */
-.driver-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.driver-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); opacity: 0; animation: slideInLeft 0.4s ease-out forwards; }
+.driver-item:nth-child(1) { animation-delay: 0.2s; }
+.driver-item:nth-child(2) { animation-delay: 0.4s; }
+.driver-item:nth-child(3) { animation-delay: 0.6s; }
+.driver-item:nth-child(4) { animation-delay: 0.8s; }
 .driver-rank { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
 .driver-rank.r1 { background: rgba(233,69,96,0.2); color: #e94560; }
 .driver-rank.r2 { background: rgba(255,167,38,0.2); color: #ffa726; }
@@ -157,7 +254,10 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 
 /* Heatmap */
 .heatmap-row { display: flex; gap: 3px; margin-bottom: 3px; }
-.heatmap-cell { flex: 1; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.8); }
+.heatmap-cell { flex: 1; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.8); opacity: 0; animation: heatFadeIn 0.4s ease-out forwards; }
+.heatmap-row:nth-child(1) .heatmap-cell { animation-delay: 0.1s; }
+.heatmap-row:nth-child(2) .heatmap-cell { animation-delay: 0.3s; }
+.heatmap-row:nth-child(3) .heatmap-cell { animation-delay: 0.5s; }
 .heatmap-cell.strong-bull { background: rgba(46,125,50,0.6); }
 .heatmap-cell.bull { background: rgba(76,175,80,0.4); }
 .heatmap-cell.neutral { background: rgba(100,100,100,0.3); }
@@ -183,7 +283,7 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 <div class="dash-grid">
   <div class="dash-card">
     <div class="label">XAUUSD</div>
-    <div class="value">$4,415</div>
+    <div class="value" data-target="4415" data-prefix="$">$4,415</div>
     <div class="change up">+$39.66 (+0.91%)</div>
   </div>
   <div class="dash-card">
@@ -249,29 +349,53 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 
 <div class="container">
 
-<!-- ===== RATING GAUGE ===== -->
-<div class="card">
+<!-- ===== ANIMATED SVG GAUGE ===== -->
+<div class="card animate-on-scroll">
   <div class="card-title">综合评级仪表</div>
-  <div class="gauge-container">
-    <div class="gauge-bar">
-      <div class="segment bear-seg" style="width: 20%;"></div>
-      <div class="segment neutral-seg" style="width: 20%;"></div>
-      <div class="segment bull-seg" style="width: 60%;"></div>
-    </div>
-    <div style="position: relative; height: 16px;">
-      <div style="position: absolute; left: 58%; transform: translateX(-50%);">
-        <svg width="14" height="14" viewBox="0 0 14 14"><polygon points="7,0 14,14 0,14" fill="#4caf50"/></svg>
-      </div>
-    </div>
-    <div class="gauge-labels">
-      <span>Strong Bear</span><span>Bear</span><span>Neutral</span><span>Bull</span><span>Strong Bull</span>
-    </div>
-    <div style="margin-top: 8px; font-size: 13px; color: #4caf50; font-weight: 700;">Bullish · 维持看多但不追涨</div>
+  <div class="gauge-svg-container">
+    <svg viewBox="0 0 200 120" width="260" style="display: block; margin: 0 auto;">
+      <!-- Background arc -->
+      <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#2a2a40" stroke-width="12" stroke-linecap="round"/>
+      <!-- Bear zone (red) -->
+      <path d="M 20 100 A 80 80 0 0 1 52 38" fill="none" stroke="#ef5350" stroke-width="12" stroke-linecap="round" opacity="0.6"
+            stroke-dasharray="80" stroke-dashoffset="80">
+        <animate attributeName="stroke-dashoffset" from="80" to="0" dur="0.6s" begin="0.3s" fill="freeze"/>
+      </path>
+      <!-- Neutral zone (orange) -->
+      <path d="M 56 34 A 80 80 0 0 1 100 20" fill="none" stroke="#ffa726" stroke-width="12" stroke-linecap="round" opacity="0.6"
+            stroke-dasharray="60" stroke-dashoffset="60">
+        <animate attributeName="stroke-dashoffset" from="60" to="0" dur="0.6s" begin="0.7s" fill="freeze"/>
+      </path>
+      <!-- Bull zone (green) -->
+      <path d="M 104 20 A 80 80 0 0 1 180 100" fill="none" stroke="#4caf50" stroke-width="12" stroke-linecap="round" opacity="0.6"
+            stroke-dasharray="120" stroke-dashoffset="120">
+        <animate attributeName="stroke-dashoffset" from="120" to="0" dur="0.8s" begin="1.1s" fill="freeze"/>
+      </path>
+      <!-- Needle -->
+      <g class="gauge-needle" style="transform: rotate(36deg);">
+        <line x1="100" y1="100" x2="100" y2="30" stroke="#fff" stroke-width="2.5" stroke-linecap="round">
+          <animateTransform attributeName="transform" type="rotate" from="-90 100 100" to="36 100 100" dur="1.5s" begin="0.5s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+        </line>
+        <circle cx="100" cy="100" r="5" fill="#e94560"/>
+      </g>
+      <!-- Center dot -->
+      <circle cx="100" cy="100" r="3" fill="#fff"/>
+      <!-- Labels -->
+      <text x="15" y="115" font-size="8" fill="#666" text-anchor="middle">Bear</text>
+      <text x="100" y="10" font-size="8" fill="#666" text-anchor="middle">Neutral</text>
+      <text x="185" y="115" font-size="8" fill="#666" text-anchor="middle">Bull</text>
+      <!-- Value -->
+      <text x="100" y="85" font-size="14" fill="#4caf50" font-weight="800" text-anchor="middle" class="gauge-value-text" opacity="0">
+        Bullish
+        <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.8s" fill="freeze"/>
+      </text>
+    </svg>
+    <div style="font-size: 12px; color: #888; margin-top: 4px;">维持看多但不追涨</div>
   </div>
 </div>
 
 <!-- ===== COMPARISON VISUAL ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(233,69,96,0.15); color: #e94560;">↕</span>
     8月16日 → 8月18日 变化
@@ -279,49 +403,49 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 
   <div class="compare-item">
     <div class="compare-label"><span class="name">黄金价格</span><span class="vals">$4,375 → $4,415</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill positive" style="width: 65%;"></div></div>
+    <div class="compare-bar-bg"><div class="compare-bar-fill positive" data-width="65%"></div></div>
     <div class="compare-delta" style="color: #4caf50;">+$39.66 (+0.91%) ✓ 突破$4,400</div>
   </div>
 
   <div class="compare-item">
     <div class="compare-label"><span class="name">10Y 收益率</span><span class="vals">4.70% → 4.73%</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill negative" style="width: 30%;"></div></div>
+    <div class="compare-bar-bg"><div class="compare-bar-fill negative" data-width="30%"></div></div>
     <div class="compare-delta" style="color: #ef5350;">+3bp ⚠ 接近19个月高点4.75%</div>
   </div>
 
   <div class="compare-item">
     <div class="compare-label"><span class="name">DXY 美元</span><span class="vals">99.667 → 99.601</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill positive" style="width: 20%;"></div></div>
+    <div class="compare-bar-bg"><div class="compare-bar-fill positive" data-width="20%"></div></div>
     <div class="compare-delta" style="color: #4caf50;">-0.066 美元走弱利好黄金</div>
   </div>
 
   <div class="compare-item">
     <div class="compare-label"><span class="name">Brent 原油</span><span class="vals">$88.50 → $90.73</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill neutral" style="width: 55%;"></div></div>
+    <div class="compare-bar-bg"><div class="compare-bar-fill neutral" data-width="55%"></div></div>
     <div class="compare-delta" style="color: #ffa726;">+$2.23 (+2.5%) 地缘溢价推升</div>
   </div>
 
   <div class="compare-item">
     <div class="compare-label"><span class="name">零售销售</span><span class="vals">未公布 → -0.6%</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill positive" style="width: 80%;"></div></div>
+    <div class="compare-bar-bg"><div class="compare-bar-fill positive" data-width="80%"></div></div>
     <div class="compare-delta" style="color: #4caf50;">重大意外 · 预期+0.1% · 利好黄金</div>
   </div>
 
   <div class="compare-item">
     <div class="compare-label"><span class="name">CFTC 净多</span><span class="vals">— → 137,662</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill positive" style="width: 50%;"></div></div>
+    <div class="compare-bar-bg"><div class="compare-bar-fill positive" data-width="50%"></div></div>
     <div class="compare-delta" style="color: #4caf50;">+6,896手 · 新资金进入</div>
   </div>
 </div>
 
 <!-- ===== KEY INSIGHT ===== -->
-<div class="insight-box">
+<div class="insight-box animate-on-scroll">
   <div class="insight-label">核心判断</div>
   <div class="insight-text">黄金突破$4,400但10Y收益率仍在上行，信号存在冲突。零售销售意外走弱验证了经济放缓逻辑，但Risk/Reward 0.86:1仍不理想。<span style="color: #e94560; font-weight: 700;">最值得交易的不是追涨突破，而是等回调至$4,250-$4,300布局多单。</span></div>
 </div>
 
 <!-- ===== DRIVER RANKING ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(255,167,38,0.15); color: #ffa726;">⚡</span>
     驱动力排序
@@ -349,15 +473,15 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 </div>
 
 <!-- ===== SCENARIOS ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(76,175,80,0.15); color: #4caf50;">◎</span>
     Bull / Base / Bear
   </div>
-  <div class="prob-bar">
-    <div class="segment bull-seg" style="width: 30%;"></div>
-    <div class="segment base-seg" style="width: 50%;"></div>
-    <div class="segment bear-seg" style="width: 20%;"></div>
+  <div class="prob-bar" id="probBar">
+    <div class="bull-seg" data-width="30%"></div>
+    <div class="base-seg" data-width="50%"></div>
+    <div class="bear-seg" data-width="20%"></div>
   </div>
   <div class="scenario-grid">
     <div class="scenario bull">
@@ -382,7 +506,7 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 </div>
 
 <!-- ===== RISK / REWARD VISUAL ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(239,83,80,0.15); color: #ef5350;">⚖</span>
     Risk / Reward
@@ -399,25 +523,25 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 </div>
 
 <!-- ===== EXPECTATION GAP ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(156,39,176,0.15); color: #ce93d8;">◇</span>
     预期差分析
   </div>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-    <div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #4caf50;">
+    <div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #4caf50; animation: fadeInUp 0.5s ease-out 0.2s both;">
       <div style="font-size: 10px; color: #4caf50; font-weight: 700; margin-bottom: 4px;">正向预期差</div>
       <div style="font-size: 12px;">零售销售意外走弱，Fed降息预期可能大幅上升</div>
     </div>
-    <div style="background: rgba(239,83,80,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #ef5350;">
+    <div style="background: rgba(239,83,80,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #ef5350; animation: fadeInUp 0.5s ease-out 0.4s both;">
       <div style="font-size: 10px; color: #ef5350; font-weight: 700; margin-bottom: 4px;">负向预期差</div>
       <div style="font-size: 12px;">10Y收益率仍在上升至4.73%，突破4.75%形成实质压力</div>
     </div>
-    <div style="background: rgba(33,150,243,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #2196f3;">
+    <div style="background: rgba(33,150,243,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #2196f3; animation: fadeInUp 0.5s ease-out 0.6s both;">
       <div style="font-size: 10px; color: #2196f3; font-weight: 700; margin-bottom: 4px;">隐藏预期差</div>
       <div style="font-size: 12px;">北美ETF仅流入$71M，若大规模回流将成为新边际买盘</div>
     </div>
-    <div style="background: rgba(255,167,38,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #ffa726;">
+    <div style="background: rgba(255,167,38,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #ffa726; animation: fadeInUp 0.5s ease-out 0.8s both;">
       <div style="font-size: 10px; color: #ffa726; font-weight: 700; margin-bottom: 4px;">反转风险</div>
       <div style="font-size: 12px;">中东停火 + 经济走强 → 快速回调$100-150</div>
     </div>
@@ -425,20 +549,21 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 </div>
 
 <!-- ===== CATALYST TIMELINE ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
-    <span class="icon" style="background: rgba(33,150,243,0.15); color: #42a5f5;">▸</span>
+    <span class="icon" style="background: rgba(33,150,136,0.15); color: #26a69a;">▸</span>
     催化剂时间线
   </div>
-  <div class="catalyst-timeline">
+  <div class="catalyst-timeline" id="timeline">
+    <div class="timeline-line-fill" id="timelineFill"></div>
     <div class="catalyst-item">
-      <div class="catalyst-dot high"></div>
+      <div class="catalyst-dot high active"></div>
       <div class="catalyst-period">1-7天</div>
       <div class="catalyst-name">零售数据消化 · 中东局势 · Fed官员讲话</div>
       <div class="catalyst-impact">影响: 高 — 任何数据超预期都将引发大幅波动</div>
     </div>
     <div class="catalyst-item">
-      <div class="catalyst-dot high"></div>
+      <div class="catalyst-dot high active"></div>
       <div class="catalyst-period">1-4周</div>
       <div class="catalyst-name">Jackson Hole 研讨会 (Powell讲话)</div>
       <div class="catalyst-impact">影响: 极高 — 可能改变Fed降息预期，年度最关键事件</div>
@@ -459,7 +584,7 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 </div>
 
 <!-- ===== MONITORING DASHBOARD ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(0,150,136,0.15); color: #26a69a;">◉</span>
     监控面板
@@ -468,42 +593,42 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
     <div class="monitor-item">
       <span class="monitor-name">黄金</span>
       <span class="monitor-val">$4,415</span>
-      <div class="monitor-signal" style="background: #4caf50;"></div>
+      <div class="monitor-signal bull-dot"></div>
     </div>
     <div class="monitor-item">
       <span class="monitor-name">DXY</span>
       <span class="monitor-val">99.60</span>
-      <div class="monitor-signal" style="background: #4caf50;"></div>
+      <div class="monitor-signal bull-dot"></div>
     </div>
     <div class="monitor-item">
       <span class="monitor-name">10Y Yield</span>
       <span class="monitor-val">4.73%</span>
-      <div class="monitor-signal" style="background: #ef5350;"></div>
+      <div class="monitor-signal bear-dot"></div>
     </div>
     <div class="monitor-item">
       <span class="monitor-name">Real Yield</span>
       <span class="monitor-val">1.33%</span>
-      <div class="monitor-signal" style="background: #ffa726;"></div>
+      <div class="monitor-signal neutral-dot"></div>
     </div>
     <div class="monitor-item">
       <span class="monitor-name">Brent</span>
       <span class="monitor-val">$90.73</span>
-      <div class="monitor-signal" style="background: #ffa726;"></div>
+      <div class="monitor-signal neutral-dot"></div>
     </div>
     <div class="monitor-item">
       <span class="monitor-name">VIX</span>
       <span class="monitor-val">偏高</span>
-      <div class="monitor-signal" style="background: #ffa726;"></div>
+      <div class="monitor-signal neutral-dot"></div>
     </div>
     <div class="monitor-item">
       <span class="monitor-name">ETF Flow</span>
       <span class="monitor-val">+$3B</span>
-      <div class="monitor-signal" style="background: #4caf50;"></div>
+      <div class="monitor-signal bull-dot"></div>
     </div>
     <div class="monitor-item">
       <span class="monitor-name">CFTC Net</span>
       <span class="monitor-val">137K</span>
-      <div class="monitor-signal" style="background: #4caf50;"></div>
+      <div class="monitor-signal bull-dot"></div>
     </div>
   </div>
   <div style="margin-top: 10px; font-size: 11px; color: #888;">
@@ -514,7 +639,7 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 </div>
 
 <!-- ===== MACRO HEATMAP ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(233,69,96,0.15); color: #e94560;">▦</span>
     宏观信号热力图
@@ -534,29 +659,29 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
     <div class="heatmap-cell bear">通胀温和</div>
     <div class="heatmap-cell neutral">Fed观望</div>
   </div>
-  <div style="margin-top: 8px; font-size: 11px; color: #888; text-align: center;">
+  <div style="margin-top: 8px; font-size: 11px; color: #888; text-align: center; animation: fadeIn 0.5s ease-out 1s both;">
     四维确认: 价格✓ 资金✓ 仓位✓ 实际利率✗ = <span style="color: #ffa726;">三维确认，一维冲突</span>
   </div>
 </div>
 
 <!-- ===== NARRATIVE & REFLEXIVITY ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(156,39,176,0.15); color: #ce93d8;">∞</span>
     叙事 · 反身性 · 溢价
   </div>
   <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-    <div style="background: #12121f; border-radius: 8px; padding: 12px;">
+    <div style="background: #12121f; border-radius: 8px; padding: 12px; animation: fadeInUp 0.4s ease-out 0.2s both;">
       <div style="font-size: 11px; color: #ce93d8; font-weight: 700; margin-bottom: 4px;">叙事风险</div>
       <div style="font-size: 12px;">"地缘危机+经济放缓+Fed转鸽"三重叙事<span style="color: #ffa726;">扩散中</span>，尚未成为共识。失效条件：中东停火 / 经济重新走强。</div>
     </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 12px;">
+    <div style="background: #12121f; border-radius: 8px; padding: 12px; animation: fadeInUp 0.4s ease-out 0.4s both;">
       <div style="font-size: 11px; color: #ce93d8; font-weight: 700; margin-bottom: 4px;">反身性</div>
       <div style="font-size: 12px;">
         <span style="color: #4caf50; font-weight: 700;">Positive Reflexivity</span> — 突破$4,400 → 媒体关注 → ETF流入 → 更多买入 → 继续上涨。循环运行中，<span style="color: #ffa726;">未进入极端阶段</span>。
       </div>
     </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 12px;">
+    <div style="background: #12121f; border-radius: 8px; padding: 12px; animation: fadeInUp 0.4s ease-out 0.6s both;">
       <div style="font-size: 11px; color: #ce93d8; font-weight: 700; margin-bottom: 4px;">风险溢价</div>
       <div style="font-size: 12px;">地缘溢价<span style="color: #ef5350;">偏高</span>（中东缓和可压缩$50-100）。经济放缓溢价可能扩大。央行结构性溢价持续。</div>
     </div>
@@ -564,25 +689,25 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 </div>
 
 <!-- ===== INVALIDATION ===== -->
-<div class="card">
+<div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(239,83,80,0.15); color: #ef5350;">✗</span>
     交易逻辑失效条件
   </div>
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ef5350;">
+    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ef5350; animation: fadeInUp 0.4s ease-out 0.2s both;">
       <div style="font-size: 10px; color: #ef5350; font-weight: 700;">宏观</div>
       <div style="font-size: 11px; margin-top: 4px;">10Y破4.75% / CPI重新加速至4%+ / 经济数据走强</div>
     </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ffa726;">
+    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ffa726; animation: fadeInUp 0.4s ease-out 0.4s both;">
       <div style="font-size: 10px; color: #ffa726; font-weight: 700;">资金</div>
       <div style="font-size: 11px; margin-top: 4px;">ETF连续两周净流出 / CFTC净多大幅下降 / PBOC暂停</div>
     </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #42a5f5;">
+    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #42a5f5; animation: fadeInUp 0.4s ease-out 0.6s both;">
       <div style="font-size: 10px; color: #42a5f5; font-weight: 700;">技术</div>
       <div style="font-size: 11px; margin-top: 4px;">跌破$4,250 / 跌破$4,000</div>
     </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ce93d8;">
+    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ce93d8; animation: fadeInUp 0.4s ease-out 0.8s both;">
       <div style="font-size: 10px; color: #ce93d8; font-weight: 700;">叙事</div>
       <div style="font-size: 11px; margin-top: 4px;">中东突然停火 / Fed明确转鹰</div>
     </div>
@@ -590,7 +715,7 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 </div>
 
 <!-- ===== FINAL VERDICT ===== -->
-<div class="verdict-card">
+<div class="verdict-card animate-on-scroll">
   <div class="verdict-rating">
     <span class="verdict-badge bullish">BULLISH</span>
     <span style="font-size: 13px; color: #ccc;">维持 · 不建议追涨</span>
@@ -609,6 +734,40 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
   数据来源: Trading Economics, World Gold Council, CFTC, Reuters, CNBC, BLS, BEA<br>
   数据截止: 2026-08-17 | 报告生成: 2026-08-18
 </div>
+
+<script>
+// Intersection Observer for scroll-triggered animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Animate comparison bars inside this card
+      const bars = entry.target.querySelectorAll('.compare-bar-fill[data-width]');
+      bars.forEach((bar, i) => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.width;
+          const delta = bar.closest('.compare-item').querySelector('.compare-delta');
+          if (delta) setTimeout(() => delta.classList.add('show'), 600);
+        }, i * 150);
+      });
+      // Animate probability bar
+      const probSegs = entry.target.querySelectorAll('.prob-bar [data-width]');
+      probSegs.forEach(seg => {
+        setTimeout(() => { seg.style.width = seg.dataset.width; }, 200);
+      });
+      // Animate timeline
+      const items = entry.target.querySelectorAll('.catalyst-item');
+      items.forEach((item, i) => {
+        setTimeout(() => item.classList.add('visible'), i * 250);
+      });
+      const fill = entry.target.querySelector('.timeline-line-fill');
+      if (fill) setTimeout(() => { fill.style.height = '100%'; }, 100);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
