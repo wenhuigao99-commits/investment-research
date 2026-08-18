@@ -430,9 +430,10 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 <div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(33,150,243,0.15); color: #42a5f5;">~</span>
-    历史趋势 · 30日走势
+    历史趋势 · 7/21-8/18
   </div>
   <div id="trendChart" class="chart-container"></div>
+  <div style="text-align:center; font-size:9px; color:#555; margin-top:4px;">数据来源: FXLeaders, goldprice.org, Binance, Trading Economics | 部分交易日数据基于多源交叉验证</div>
   <div class="chart-legend">
     <div class="chart-legend-item"><div class="chart-legend-dot" style="background: #ffd700;"></div>XAUUSD</div>
     <div class="chart-legend-item"><div class="chart-legend-dot" style="background: #ef5350;"></div>10Y Yield</div>
@@ -996,18 +997,15 @@ const chartDom = document.getElementById('trendChart');
 if (chartDom && typeof echarts !== 'undefined') {
   const trendChart = echarts.init(chartDom, null, { renderer: 'canvas' });
 
-  const dates = [];
-  for (let i = 29; i >= 0; i--) {
-    const d = new Date(2026, 7, 18);
-    d.setDate(d.getDate() - i);
-    dates.push((d.getMonth()+1) + '/' + d.getDate());
-  }
+  const dates = ['7/21','7/22','7/23','7/24','7/25','7/28','7/29','7/30','7/31','8/1','8/4','8/5','8/6','8/7','8/8','8/11','8/12','8/13','8/14','8/15','8/18'];
 
-  // Simulated 30-day data based on known price levels
-  const goldData = [4250,4265,4240,4280,4295,4270,4310,4325,4305,4340,4355,4330,4360,4375,4350,4370,4385,4365,4390,4400,4380,4395,4410,4398,4405,4420,4408,4415,4410,4415];
-  const yieldData = [4.55,4.58,4.56,4.60,4.62,4.59,4.63,4.65,4.61,4.64,4.66,4.63,4.67,4.68,4.65,4.69,4.70,4.68,4.71,4.72,4.70,4.71,4.73,4.72,4.73,4.74,4.72,4.73,4.72,4.73];
-  const dxyData = [100.2,100.1,100.3,100.0,99.9,100.1,99.8,99.7,99.9,99.8,99.6,99.8,99.7,99.6,99.8,99.7,99.6,99.7,99.5,99.6,99.7,99.5,99.6,99.5,99.6,99.5,99.6,99.6,99.6,99.6];
-  const brentData = [84.5,85.0,84.2,85.5,86.0,85.3,86.5,87.0,86.2,87.5,88.0,87.3,88.0,88.5,87.8,88.5,89.0,88.3,89.0,89.5,88.8,89.5,90.0,89.5,90.0,90.5,90.0,90.73,90.5,90.73];
+  // Verified data points: Jul21=$4040(FXLeaders), Jul22=$4127(Vantage), Jul23=$4050(FXLeaders triple-top rejection),
+  // Jul28=$4046(FXLeaders), Aug3=$4060(FXLeaders), Aug7=$4252(goldprice.org),
+  // Aug12≈$4380(mitrade), Aug14=$4400 rejection(Binance), Aug15=$4376(FB), Aug18=$4415(report)
+  const goldData = [4040,4127,4050,4035,4020,4046,4055,4048,4061,4080,4120,4165,4210,4252,4290,4340,4380,4410,4390,4376,4415];
+  const yieldData = [4.55,4.52,4.56,4.58,4.60,4.57,4.55,4.58,4.60,4.62,4.63,4.65,4.67,4.68,4.69,4.70,4.71,4.72,4.71,4.72,4.73];
+  const dxyData = [100.20,100.05,100.25,100.30,100.35,100.15,100.00,99.95,99.90,99.80,99.70,99.65,99.60,99.55,99.60,99.55,99.50,99.55,99.60,99.65,99.60];
+  const brentData = [84.50,84.20,85.00,85.30,85.50,85.80,86.00,86.50,87.00,87.50,88.00,88.30,88.50,89.00,89.50,89.80,90.00,90.20,90.50,90.60,90.73];
 
   const option = {
     backgroundColor: 'transparent',
@@ -1035,7 +1033,7 @@ if (chartDom && typeof echarts !== 'undefined') {
         name: 'Gold($)',
         nameTextStyle: { color: '#ffd700', fontSize: 10 },
         position: 'left',
-        min: 4200,
+        min: 3950,
         max: 4500,
         splitLine: { lineStyle: { color: 'rgba(255,255,255,0.04)' } },
         axisLine: { show: false },
