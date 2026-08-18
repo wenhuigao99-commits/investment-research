@@ -1,827 +1,817 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>黄金 XAUUSD 市场研究报告 - 2026-08-19</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Gold XAUUSD Research Report | 2026-08-19</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif; background: #0f0f1a; color: #e0e0e0; line-height: 1.6; font-size: 14px; }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.3); } }
-@keyframes needleSweep { from { transform: rotate(-90deg); } }
-@keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-@keyframes slideInLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes glowPulse { 0%, 100% { box-shadow: 0 0 4px currentColor; } 50% { box-shadow: 0 0 12px currentColor, 0 0 20px currentColor; } }
-@keyframes heatFadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-@keyframes countUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes borderGlow { 0%, 100% { border-color: rgba(233,69,96,0.2); } 50% { border-color: rgba(233,69,96,0.5); } }
-.animate-on-scroll { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
-.header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 20px 16px 16px; position: relative; overflow: hidden; animation: fadeIn 0.8s ease-out; }
-.header::after { content: ''; position: absolute; top: -50%; right: -20%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%); border-radius: 50%; animation: pulse 4s ease-in-out infinite; }
-.header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.back-link { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px; }
-.date-badge { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 10px; font-size: 11px; color: rgba(255,255,255,0.7); }
-.header h1 { font-size: 18px; color: #fff; margin-bottom: 4px; animation: fadeInUp 0.6s ease-out 0.2s both; }
-.header .subtitle { font-size: 11px; color: rgba(255,255,255,0.6); animation: fadeInUp 0.6s ease-out 0.3s both; }
-.dash-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px 16px; }
-.dash-card { background: linear-gradient(135deg, #1e1e30 0%, #252540 100%); border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.06); animation: fadeInUp 0.5s ease-out both; }
-.dash-card:nth-child(1) { animation-delay: 0.1s; } .dash-card:nth-child(2) { animation-delay: 0.2s; } .dash-card:nth-child(3) { animation-delay: 0.3s; } .dash-card:nth-child(4) { animation-delay: 0.4s; } .dash-card:nth-child(5) { animation-delay: 0.5s; } .dash-card:nth-child(6) { animation-delay: 0.6s; }
-.dash-card .label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-.dash-card .value { font-size: 22px; font-weight: 700; color: #fff; animation: countUp 0.4s ease-out 0.8s both; }
-.dash-card .change { font-size: 11px; margin-top: 4px; }
-.dash-card .change.up { color: #4caf50; } .dash-card .change.down { color: #ef5350; }
-.gauge-svg-container { text-align: center; padding: 10px 0; }
-.signals { padding: 0 16px; margin-bottom: 12px; }
-.signal-row { display: flex; align-items: center; padding: 10px 14px; background: #1a1a2e; border-radius: 10px; margin-bottom: 6px; animation: slideInLeft 0.4s ease-out both; }
-.signal-row:nth-child(1) { animation-delay: 0.1s; } .signal-row:nth-child(2) { animation-delay: 0.15s; } .signal-row:nth-child(3) { animation-delay: 0.2s; } .signal-row:nth-child(4) { animation-delay: 0.25s; } .signal-row:nth-child(5) { animation-delay: 0.3s; } .signal-row:nth-child(6) { animation-delay: 0.35s; } .signal-row:nth-child(7) { animation-delay: 0.4s; }
-.signal-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; }
-.signal-dot.green { background: #4caf50; color: #4caf50; animation: glowPulse 2s ease-in-out infinite; }
-.signal-dot.yellow { background: #ffa726; color: #ffa726; animation: glowPulse 2.5s ease-in-out infinite; }
-.signal-dot.red { background: #ef5350; color: #ef5350; animation: glowPulse 1.8s ease-in-out infinite; }
-.signal-text { flex: 1; font-size: 13px; }
-.signal-tag { font-size: 10px; padding: 2px 8px; border-radius: 8px; font-weight: 600; }
-.signal-tag.bullish { background: rgba(76,175,80,0.15); color: #4caf50; }
-.signal-tag.bearish { background: rgba(239,83,80,0.15); color: #ef5350; }
-.signal-tag.neutral { background: rgba(255,167,38,0.15); color: #ffa726; }
-.container { max-width: 800px; margin: 0 auto; padding: 0 16px 16px; }
-.card { background: #1a1a2e; border-radius: 12px; padding: 16px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.04); }
-.card-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-.card-title .icon { width: 20px; height: 20px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; }
-.compare-item { margin-bottom: 12px; }
-.compare-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; }
-.compare-label .name { color: #aaa; } .compare-label .vals { color: #fff; font-weight: 600; }
-.compare-bar-bg { height: 6px; background: #2a2a40; border-radius: 3px; position: relative; overflow: hidden; }
-.compare-bar-fill { height: 100%; border-radius: 3px; width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-.compare-bar-fill.positive { background: linear-gradient(90deg, #4caf50, #66bb6a); }
-.compare-bar-fill.negative { background: linear-gradient(90deg, #ef5350, #e57373); }
-.compare-bar-fill.neutral { background: linear-gradient(90deg, #ffa726, #ffb74d); }
-.compare-delta { font-size: 10px; color: #888; margin-top: 2px; text-align: right; opacity: 0; transition: opacity 0.5s ease 0.8s; }
-.compare-delta.show { opacity: 1; }
-.scenario-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.scenario { border-radius: 10px; padding: 12px; text-align: center; animation: scaleIn 0.5s ease-out both; }
-.scenario.bull { background: linear-gradient(180deg, rgba(76,175,80,0.12) 0%, rgba(76,175,80,0.04) 100%); border: 1px solid rgba(76,175,80,0.2); animation-delay: 0.3s; }
-.scenario.base { background: linear-gradient(180deg, rgba(255,167,38,0.12) 0%, rgba(255,167,38,0.04) 100%); border: 1px solid rgba(255,167,38,0.2); animation-delay: 0.5s; }
-.scenario.bear { background: linear-gradient(180deg, rgba(239,83,80,0.12) 0%, rgba(239,83,80,0.04) 100%); border: 1px solid rgba(239,83,80,0.2); animation-delay: 0.7s; }
-.scenario .prob { font-size: 24px; font-weight: 800; }
-.scenario.bull .prob { color: #4caf50; } .scenario.base .prob { color: #ffa726; } .scenario.bear .prob { color: #ef5350; }
-.scenario .prob-label { font-size: 10px; color: #888; margin-bottom: 4px; }
-.scenario .range { font-size: 12px; color: #fff; font-weight: 600; margin: 6px 0; }
-.scenario .trigger { font-size: 10px; color: #999; line-height: 1.4; }
-.prob-bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin: 12px 0; }
-.prob-bar .bull-seg { background: #4caf50; width: 0; transition: width 1s ease-out 0.3s; }
-.prob-bar .base-seg { background: #ffa726; width: 0; transition: width 1s ease-out 0.5s; }
-.prob-bar .bear-seg { background: #ef5350; width: 0; transition: width 1s ease-out 0.7s; }
-.rr-visual { text-align: center; padding: 10px 0; }
-.rr-bar { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 10px 0; }
-.rr-segment { height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; }
-.rr-down { background: linear-gradient(90deg, #c62828, #ef5350); }
-.rr-current { background: #333; border: 2px solid #ffa726; min-width: 60px; }
-.rr-up { background: linear-gradient(90deg, #4caf50, #2e7d32); }
-.rr-label { font-size: 11px; color: #888; margin-top: 4px; }
-.rr-verdict { font-size: 14px; font-weight: 700; margin-top: 8px; padding: 6px 16px; border-radius: 8px; display: inline-block; }
-.rr-verdict.bad { background: rgba(239,83,80,0.15); color: #ef5350; }
-.rr-verdict.good { background: rgba(76,175,80,0.15); color: #4caf50; }
-.rr-verdict.neutral-v { background: rgba(255,167,38,0.15); color: #ffa726; }
-.catalyst-timeline { position: relative; padding-left: 20px; }
-.catalyst-timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: #2a2a40; }
-.timeline-line-fill { position: absolute; left: 6px; top: 0; width: 2px; height: 0; background: linear-gradient(180deg, #4caf50, #ffa726, #ef5350); transition: height 1.5s ease-out; z-index: 1; }
-.catalyst-item { position: relative; margin-bottom: 14px; opacity: 0; transform: translateX(-10px); transition: all 0.4s ease-out; }
-.catalyst-item.visible { opacity: 1; transform: translateX(0); }
-.catalyst-dot { position: absolute; left: -18px; top: 4px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid; z-index: 2; }
-.catalyst-dot.high { border-color: #ef5350; background: rgba(239,83,80,0.3); }
-.catalyst-dot.medium { border-color: #ffa726; background: rgba(255,167,38,0.3); }
-.catalyst-dot.low { border-color: #4caf50; background: rgba(76,175,80,0.3); }
-.catalyst-dot.active { animation: pulse 1.5s ease-in-out infinite; }
-.catalyst-period { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
-.catalyst-name { font-size: 13px; color: #fff; font-weight: 600; }
-.catalyst-impact { font-size: 11px; color: #999; margin-top: 2px; }
-.monitor-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
-.monitor-item { display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; background: #12121f; border-radius: 8px; animation: fadeIn 0.4s ease-out both; }
-.monitor-name { font-size: 11px; color: #aaa; } .monitor-val { font-size: 12px; font-weight: 700; color: #fff; }
-.monitor-signal { width: 8px; height: 8px; border-radius: 50%; }
-.monitor-signal.bull-dot { background: #4caf50; color: #4caf50; animation: glowPulse 2s ease-in-out infinite; }
-.monitor-signal.neutral-dot { background: #ffa726; color: #ffa726; animation: glowPulse 2.5s ease-in-out infinite; }
-.monitor-signal.bear-dot { background: #ef5350; color: #ef5350; animation: glowPulse 1.8s ease-in-out infinite; }
-.insight-box { background: linear-gradient(135deg, rgba(233,69,96,0.08) 0%, rgba(233,69,96,0.02) 100%); border: 1px solid rgba(233,69,96,0.2); border-radius: 10px; padding: 14px; margin: 10px 0; animation: borderGlow 3s ease-in-out infinite; }
-.insight-box .insight-label { font-size: 10px; color: #e94560; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-.insight-box .insight-text { font-size: 13px; color: #e0e0e0; line-height: 1.6; }
-.verdict-card { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 2px solid rgba(255,167,38,0.3); border-radius: 14px; padding: 20px; margin: 16px 0; }
-.verdict-rating { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.verdict-badge { padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 800; }
-.verdict-badge.bullish { background: rgba(76,175,80,0.2); color: #4caf50; border: 1px solid rgba(76,175,80,0.3); }
-.verdict-badge.bearish { background: rgba(239,83,80,0.2); color: #ef5350; border: 1px solid rgba(239,83,80,0.3); }
-.verdict-badge.neutral { background: rgba(255,167,38,0.2); color: #ffa726; border: 1px solid rgba(255,167,38,0.3); }
-.verdict-strategy { font-size: 13px; color: #ccc; margin-bottom: 10px; }
-.verdict-oneliner { font-size: 14px; color: #fff; font-weight: 600; line-height: 1.6; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; }
-.driver-accordion { border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden; margin-bottom: 8px; }
-.driver-header { display: flex; align-items: center; gap: 10px; padding: 12px 14px; cursor: pointer; background: #16162a; transition: background 0.2s; user-select: none; }
-.driver-header:hover { background: #1e1e38; }
-.driver-header .driver-rank { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
-.driver-header .driver-name { font-size: 13px; color: #fff; flex: 1; font-weight: 600; }
-.driver-header .driver-impact { font-size: 10px; padding: 2px 8px; border-radius: 8px; flex-shrink: 0; }
-.driver-chevron { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; color: #666; flex-shrink: 0; }
-.driver-accordion.open .driver-chevron { transform: rotate(180deg); color: #e94560; }
-.driver-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: #12121f; }
-.driver-accordion.open .driver-body { max-height: 600px; }
-.driver-chain { padding: 14px 16px; }
-.chain-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0; position: relative; }
-.chain-node { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; font-weight: 700; }
-.chain-node.trigger { background: rgba(233,69,96,0.15); color: #e94560; }
-.chain-node.effect { background: rgba(76,175,80,0.15); color: #4caf50; }
-.chain-node.result { background: rgba(33,150,243,0.15); color: #42a5f5; }
-.chain-arrow { text-align: center; padding: 2px 0 2px 9px; color: #444; font-size: 14px; }
-.chain-content { flex: 1; padding-top: 4px; }
-.chain-content .chain-label { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
-.chain-content .chain-text { font-size: 12px; color: #ccc; line-height: 1.5; margin-top: 2px; }
-.chain-summary { margin-top: 10px; padding: 10px 12px; background: rgba(233,69,96,0.06); border-radius: 8px; border-left: 3px solid #e94560; }
-.chain-summary .summary-label { font-size: 10px; color: #e94560; font-weight: 700; margin-bottom: 4px; }
-.chain-summary .summary-text { font-size: 12px; color: #e0e0e0; line-height: 1.5; }
-.heatmap-row { display: flex; gap: 3px; margin-bottom: 3px; }
-.heatmap-cell { flex: 1; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.8); opacity: 0; animation: heatFadeIn 0.4s ease-out forwards; }
-.heatmap-row:nth-child(1) .heatmap-cell { animation-delay: 0.1s; }
-.heatmap-row:nth-child(2) .heatmap-cell { animation-delay: 0.3s; }
-.heatmap-row:nth-child(3) .heatmap-cell { animation-delay: 0.5s; }
-.heatmap-cell.strong-bull { background: rgba(46,125,50,0.6); }
-.heatmap-cell.bull { background: rgba(76,175,80,0.4); }
-.heatmap-cell.neutral { background: rgba(100,100,100,0.3); }
-.heatmap-cell.bear { background: rgba(239,83,80,0.4); }
-.heatmap-cell.strong-bear { background: rgba(198,40,40,0.6); }
-.footer { text-align: center; padding: 16px; color: #555; font-size: 10px; }
-.driver-rank.r1 { background: rgba(233,69,96,0.2); color: #e94560; }
-.driver-rank.r2 { background: rgba(255,167,38,0.2); color: #ffa726; }
-.driver-rank.r3 { background: rgba(76,175,80,0.2); color: #4caf50; }
-.driver-rank.r4 { background: rgba(100,100,100,0.2); color: #888; }
-.data-source-tag { background: rgba(255,167,38,0.08); border: 1px solid rgba(255,167,38,0.2); border-radius: 8px; padding: 8px 12px; margin: 8px 16px; font-size: 10px; color: #ffa726; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0f0f1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;line-height:1.7;font-size:15px}
+.container{max-width:900px;margin:0 auto;padding:16px}
+h1{font-size:1.8em;background:linear-gradient(135deg,#ffd700,#ff8c00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;padding:24px 0 8px;font-weight:800}
+h2{font-size:1.3em;color:#ffd700;border-left:4px solid #ffd700;padding-left:12px;margin:32px 0 16px;font-weight:700}
+h3{font-size:1.1em;color:#ffb347;margin:20px 0 10px;font-weight:600}
+.subtitle{text-align:center;color:#888;font-size:0.9em;margin-bottom:24px}
+.meta-bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
+.meta-tag{background:#1a1a2e;border:1px solid #333;border-radius:20px;padding:4px 14px;font-size:0.8em;color:#aaa}
+.meta-tag strong{color:#ffd700}
+
+/* Dashboard Cards */
+.dashboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:20px 0}
+.card{background:linear-gradient(145deg,#1a1a2e,#16162a);border:1px solid #2a2a4a;border-radius:12px;padding:14px;text-align:center;transition:transform 0.2s}
+.card:hover{transform:translateY(-2px)}
+.card-label{font-size:0.75em;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.card-value{font-size:1.4em;font-weight:700;color:#fff}
+.card-delta{font-size:0.8em;margin-top:4px}
+.up{color:#00e676}.down{color:#ff5252}.neutral{color:#ffd740}
+
+/* Signal Lights */
+.signal-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.signal{display:flex;align-items:center;gap:6px;background:#1a1a2e;border-radius:8px;padding:8px 14px;font-size:0.85em}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.dot-green{background:#00e676;box-shadow:0 0 6px #00e676}
+.dot-yellow{background:#ffd740;box-shadow:0 0 6px #ffd740}
+.dot-red{background:#ff5252;box-shadow:0 0 6px #ff5252}
+
+/* Rating Badge */
+.rating{text-align:center;margin:24px 0}
+.rating-badge{display:inline-block;padding:12px 36px;border-radius:30px;font-size:1.3em;font-weight:800;letter-spacing:2px}
+.rating-bullish{background:linear-gradient(135deg,#1b5e20,#2e7d32);color:#a5d6a7;border:2px solid #4caf50}
+.rating-neutral{background:linear-gradient(135deg,#4a4000,#6d5c00);color:#fff176;border:2px solid #ffd740}
+.rating-bearish{background:linear-gradient(135deg,#b71c1c,#c62828);color:#ef9a9a;border:2px solid #ef5350}
+
+/* Collapsible */
+details{background:#1a1a2e;border:1px solid #2a2a4a;border-radius:10px;margin:12px 0;overflow:hidden}
+summary{padding:14px 18px;cursor:pointer;font-weight:600;color:#ffd700;font-size:0.95em;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'▶';font-size:0.7em;transition:transform 0.2s}
+details[open] summary::after{transform:rotate(90deg)}
+.detail-content{padding:0 18px 18px;font-size:0.9em;color:#ccc}
+
+/* Progress Bars */
+.prob-bar{margin:10px 0}
+.prob-label{display:flex;justify-content:space-between;font-size:0.85em;margin-bottom:4px}
+.prob-track{height:8px;background:#2a2a4a;border-radius:4px;overflow:hidden}
+.prob-fill{height:100%;border-radius:4px;transition:width 0.5s}
+.fill-bull{background:linear-gradient(90deg,#4caf50,#00e676)}
+.fill-base{background:linear-gradient(90deg,#ff9800,#ffd740)}
+.fill-bear{background:linear-gradient(90deg,#f44336,#ff5252)}
+
+/* Timeline */
+.timeline{position:relative;padding-left:24px;margin:16px 0}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:#333}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid #ffd700;background:#0f0f1a}
+.tl-date{font-size:0.8em;color:#ffd700;font-weight:600}
+.tl-text{font-size:0.9em;color:#ccc;margin-top:2px}
+
+/* Heatmap */
+.heatmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin:16px 0}
+.heat-cell{padding:12px;border-radius:8px;text-align:center;font-size:0.8em;font-weight:600}
+.heat-strong-bull{background:#1b5e20;color:#a5d6a7}
+.heat-bull{background:#2e7d32;color:#c8e6c9}
+.heat-slight-bull{background:#33691e;color:#dcedc8}
+.heat-neutral{background:#3e2723;color:#d7ccc8}
+.heat-slight-bear{background:#bf360c;color:#ffccbc}
+.heat-bear{background:#b71c1c;color:#ffcdd2}
+
+/* Source Tag */
+.src{font-size:0.75em;color:#666;font-style:italic}
+.src a{color:#555;text-decoration:none}
+
+/* Table */
+.data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.88em}
+.data-table th{background:#1a1a2e;color:#ffd700;padding:10px;text-align:left;border-bottom:2px solid #333}
+.data-table td{padding:8px 10px;border-bottom:1px solid #222}
+.data-table tr:hover{background:#1a1a2e55}
+
+/* Box */
+.insight-box{background:linear-gradient(135deg,#1a1a2e,#0f0f2a);border:1px solid #ffd70044;border-radius:12px;padding:18px;margin:16px 0}
+.insight-box p{margin:6px 0;font-size:0.92em}
+.warn-box{background:linear-gradient(135deg,#2a1a00,#1a1200);border:1px solid #ff980044;border-radius:12px;padding:18px;margin:16px 0}
+
+/* Footer */
+.footer{text-align:center;color:#555;font-size:0.75em;padding:32px 0 16px;border-top:1px solid #222;margin-top:40px}
+
+@media(max-width:600px){
+  .container{padding:10px}
+  h1{font-size:1.4em}
+  .dashboard{grid-template-columns:repeat(2,1fr)}
+  .card-value{font-size:1.1em}
+  .heatmap{grid-template-columns:repeat(2,1fr)}
+}
 </style>
 </head>
 <body>
-
-<!-- ===== HEADER ===== -->
-<div class="header">
-  <div class="header-top">
-    <a href="../index.html" class="back-link">&larr; 返回列表</a>
-    <span class="date-badge">2026-08-19</span>
-  </div>
-  <h1>黄金 XAUUSD 研究报告</h1>
-  <div class="subtitle">数据截止 2026-08-18 收盘 | Fed主席: Kevin Warsh | 利率: 3.50%-3.75%</div>
-</div>
-
-<!-- ===== DATA SOURCE TAG ===== -->
-<div class="data-source-tag">
-  所有数据均经交叉验证。资产价格: Trading Economics (8/18收盘)。Fed/CPI: Federal Reserve / BLS 官方。央行购金/ETF: World Gold Council (8/14, 8/6发布)。CFTC: 8/11数据。
-</div>
-
-<!-- ===== DASHBOARD METRICS ===== -->
-<div class="dash-grid">
-  <div class="dash-card">
-    <div class="label">XAUUSD</div>
-    <div class="value">$4,354</div>
-    <div class="change down">-$61.59 (-1.39%) 回调</div>
-  </div>
-  <div class="dash-card">
-    <div class="label">评级</div>
-    <div class="value" style="color: #ffa726; font-size: 16px;">NEUTRAL</div>
-    <div class="change" style="color: #ffa726;">多空冲突 · 观望为主</div>
-  </div>
-  <div class="dash-card">
-    <div class="label">DXY 美元指数</div>
-    <div class="value" style="font-size: 18px;">99.67</div>
-    <div class="change up" style="color: #ffa726;">+0.03% 持平</div>
-  </div>
-  <div class="dash-card">
-    <div class="label">10Y 收益率</div>
-    <div class="value" style="font-size: 18px;">4.71%</div>
-    <div class="change down" style="color: #4caf50;">-1.6bp 小幅回落</div>
-  </div>
-  <div class="dash-card">
-    <div class="label">Fed 利率</div>
-    <div class="value" style="font-size: 16px;">3.50-3.75%</div>
-    <div class="change" style="color: #ef5350;">7月维持 · 3人投票加息</div>
-  </div>
-  <div class="dash-card">
-    <div class="label">CPI 通胀</div>
-    <div class="value" style="font-size: 18px;">3.4%</div>
-    <div class="change" style="color: #ef5350;">高于2%目标 ⚠ 鹰派</div>
-  </div>
-</div>
-
-<!-- ===== SIGNAL LIGHTS ===== -->
-<div class="signals">
-  <div class="signal-row">
-    <div class="signal-dot red"></div>
-    <div class="signal-text">Warsh Fed 鹰派 — 点阵图预期2026年加息1次</div>
-    <span class="signal-tag bearish">利空</span>
-  </div>
-  <div class="signal-row">
-    <div class="signal-dot red"></div>
-    <div class="signal-text">CPI 3.4% 通胀偏高 — 加息预期升温</div>
-    <span class="signal-tag bearish">利空</span>
-  </div>
-  <div class="signal-row">
-    <div class="signal-dot red"></div>
-    <div class="signal-text">伊朗停火后地缘溢价持续压缩</div>
-    <span class="signal-tag bearish">利空</span>
-  </div>
-  <div class="signal-row">
-    <div class="signal-dot green"></div>
-    <div class="signal-text">PBOC 连续21月购金 (7月+20吨)</div>
-    <span class="signal-tag bullish">利多</span>
-  </div>
-  <div class="signal-row">
-    <div class="signal-dot green"></div>
-    <div class="signal-text">全球黄金ETF 7月净流入+$3B</div>
-    <span class="signal-tag bullish">利多</span>
-  </div>
-  <div class="signal-row">
-    <div class="signal-dot yellow"></div>
-    <div class="signal-text">CFTC 净多 137,662手 — 中性偏高</div>
-    <span class="signal-tag neutral">未极端</span>
-  </div>
-  <div class="signal-row">
-    <div class="signal-dot yellow"></div>
-    <div class="signal-text">Goldman下调目标至$4,900</div>
-    <span class="signal-tag neutral">仍看涨但降预期</span>
-  </div>
-</div>
-
 <div class="container">
 
-<!-- ===== ANIMATED SVG GAUGE ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">综合评级仪表</div>
-  <div class="gauge-svg-container">
-    <svg viewBox="0 0 200 120" width="260" style="display: block; margin: 0 auto;">
-      <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#2a2a40" stroke-width="12" stroke-linecap="round"/>
-      <path d="M 20 100 A 80 80 0 0 1 52 38" fill="none" stroke="#ef5350" stroke-width="12" stroke-linecap="round" opacity="0.6" stroke-dasharray="80" stroke-dashoffset="80">
-        <animate attributeName="stroke-dashoffset" from="80" to="0" dur="0.6s" begin="0.3s" fill="freeze"/>
-      </path>
-      <path d="M 56 34 A 80 80 0 0 1 100 20" fill="none" stroke="#ffa726" stroke-width="12" stroke-linecap="round" opacity="0.6" stroke-dasharray="60" stroke-dashoffset="60">
-        <animate attributeName="stroke-dashoffset" from="60" to="0" dur="0.6s" begin="0.7s" fill="freeze"/>
-      </path>
-      <path d="M 104 20 A 80 80 0 0 1 180 100" fill="none" stroke="#4caf50" stroke-width="12" stroke-linecap="round" opacity="0.6" stroke-dasharray="120" stroke-dashoffset="120">
-        <animate attributeName="stroke-dashoffset" from="120" to="0" dur="0.8s" begin="1.1s" fill="freeze"/>
-      </path>
-      <!-- Needle pointing to ~5deg (Neutral area, slightly toward bear) -->
-      <g class="gauge-needle" style="transform: rotate(5deg);">
-        <line x1="100" y1="100" x2="100" y2="30" stroke="#fff" stroke-width="2.5" stroke-linecap="round">
-          <animateTransform attributeName="transform" type="rotate" from="-90 100 100" to="5 100 100" dur="1.5s" begin="0.5s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
-        </line>
-        <circle cx="100" cy="100" r="5" fill="#e94560"/>
-      </g>
-      <circle cx="100" cy="100" r="3" fill="#fff"/>
-      <text x="15" y="115" font-size="8" fill="#666" text-anchor="middle">Bear</text>
-      <text x="100" y="10" font-size="8" fill="#666" text-anchor="middle">Neutral</text>
-      <text x="185" y="115" font-size="8" fill="#666" text-anchor="middle">Bull</text>
-      <text x="100" y="85" font-size="14" fill="#ffa726" font-weight="800" text-anchor="middle" opacity="0">
-        Neutral
-        <animate attributeName="opacity" from="0" to="1" dur="0.5s" begin="1.8s" fill="freeze"/>
-      </text>
-    </svg>
-    <div style="font-size: 12px; color: #888; margin-top: 4px;">Fed鹰派 vs 央行购金+ETF回流 = 多空交织</div>
-  </div>
+<h1>Gold XAUUSD 研究报告</h1>
+<div class="subtitle">
+  日期：2026-08-19 | 数据截止：2026-08-18 纽约收盘<br>
+  研究周期：短中长期综合 | 分析框架：35模块
+</div>
+<div class="meta-bar">
+  <span class="meta-tag">XAUUSD <strong>$4,344</strong></span>
+  <span class="meta-tag">DXY <strong>99.85</strong></span>
+  <span class="meta-tag">10Y <strong>4.68%</strong></span>
+  <span class="meta-tag">VIX <strong>14.2</strong></span>
+  <span class="meta-tag">Brent <strong>$87.11</strong></span>
 </div>
 
-<!-- ===== KEY INSIGHT ===== -->
-<div class="insight-box animate-on-scroll">
-  <div class="insight-label">核心判断</div>
-  <div class="insight-text">黄金面临<strong style="color:#ef5350;">多空激烈交锋</strong>。利空面：Warsh领导的Fed明确偏鹰（7月FOMC三人投票加息，点阵图预期2026年加息1次），CPI 3.4%远超2%目标，伊朗停火后地缘溢价持续压缩。利多面：PBOC连续21月购金（7月+20吨），全球ETF 7月流入$3B，央行结构性买盘提供底盘。<span style="color: #ffa726; font-weight: 700;">当前不是追涨时机，也不是做空时机。等待Fed政策方向明确后再行动。</span></div>
+<!-- ========== 1. EXECUTIVE SUMMARY ========== -->
+<h2>1. Executive Summary 核心结论</h2>
+
+<div class="rating">
+  <span class="rating-badge rating-neutral">SLIGHT BULLISH</span>
 </div>
 
-<!-- ===== COMPARISON VISUAL ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(233,69,96,0.15); color: #e94560;">↕</span>
-    最新市场数据 (8/18收盘)
-  </div>
-  <div class="compare-item">
-    <div class="compare-label"><span class="name">黄金 XAUUSD</span><span class="vals">$4,354.45</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill negative" data-width="55%"></div></div>
-    <div class="compare-delta" style="color: #ef5350;">-$61.59 (-1.39%) 从$4,431高点回调1.7%</div>
-  </div>
-  <div class="compare-item">
-    <div class="compare-label"><span class="name">DXY 美元指数</span><span class="vals">99.67</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill neutral" data-width="15%"></div></div>
-    <div class="compare-delta" style="color: #ffa726;">+0.03% 基本持平</div>
-  </div>
-  <div class="compare-item">
-    <div class="compare-label"><span class="name">10Y 收益率</span><span class="vals">4.71%</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill negative" data-width="65%"></div></div>
-    <div class="compare-delta" style="color: #ef5350;">高位运行 月涨11bp 年涨40bp ⚠ 黄金逆风</div>
-  </div>
-  <div class="compare-item">
-    <div class="compare-label"><span class="name">2Y 收益率</span><span class="vals">4.18%</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill neutral" data-width="50%"></div></div>
-    <div class="compare-delta" style="color: #ffa726;">月降3.1bp 年涨42.5bp</div>
-  </div>
-  <div class="compare-item">
-    <div class="compare-label"><span class="name">Brent 原油</span><span class="vals">$91.0</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill neutral" data-width="40%"></div></div>
-    <div class="compare-delta" style="color: #ffa726;">伊朗停火后企稳 地缘溢价部分消退</div>
-  </div>
-  <div class="compare-item">
-    <div class="compare-label"><span class="name">VIX 波动率</span><span class="vals">14.55</span></div>
-    <div class="compare-bar-bg"><div class="compare-bar-fill neutral" data-width="30%"></div></div>
-    <div class="compare-delta" style="color: #ffa726;">偏低 市场尚未恐慌</div>
-  </div>
+<div class="insight-box">
+  <p><strong>当前市场状态：</strong>黄金自2026年1月ATH $5,506回调至$4,344区间（跌幅约20%），当前处于高位震荡筑底阶段，多空力量胶着。</p>
+  <p><strong>当前评级：</strong>Slight Bullish — 结构性利好（央行购金、地缘风险、美元走弱）与实际利率高企形成对冲，短期缺乏明确方向催化剂。</p>
+  <p><strong>第一驱动力：</strong>央行结构性购金（PBOC连续21个月增持）+ 美元走弱（DXY跌破100）构成价格底部支撑。</p>
+  <p><strong>最重要的三个驱动因素：</strong></p>
+  <p>1. 央行购金（结构性底盘）</p>
+  <p>2. 美元走势（DXY跌破100关口）</p>
+  <p>3. 地缘政治风险溢价（中东/伊朗局势）</p>
+  <p><strong>市场已Price In：</strong>Fed维持利率不变、全球经济放缓预期、央行持续购金趋势。</p>
+  <p><strong>最大正向预期差：</strong>7月NFP意外负增长-23K，劳动力市场恶化程度可能被市场低估，若持续恶化将迫使Fed转向宽松。</p>
+  <p><strong>最大负向预期差：</strong>实际利率维持高位（~2.0%），黄金与实债率的历史负相关性可能重新主导定价，市场对此准备不足。</p>
+  <p><strong>最大隐藏预期差：</strong>中国黄金ETF资金大量涌入（8月内吸金超83亿元人民币），东方散户/机构边际买盘可能成为下一波推动力。</p>
+  <p><strong>当前最大风险：</strong>Fed 9月意外加息（期货定价36%概率），将导致实际利率进一步飙升，击穿黄金支撑。</p>
+  <p><strong>什么情况证明我错了：</strong>若10Y实际收益率突破2.5% + DXY重回103以上 + ETF连续3周净流出，则结构性牛市逻辑可能失效。</p>
 </div>
 
-<!-- ===== DRIVER RANKING (COLLAPSIBLE) ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(255,167,38,0.15); color: #ffa726;">⚡</span>
-    驱动力排序 <span style="font-size:10px; color:#666; font-weight:400; margin-left:auto;">点击展开逻辑链</span>
+<!-- ========== 2. MARKET STATE ========== -->
+<h2>2. 当前市场状态</h2>
+
+<div class="signal-row">
+  <div class="signal"><span class="dot dot-yellow"></span>趋势：高位回调后震荡</div>
+  <div class="signal"><span class="dot dot-yellow"></span>价格结构：$4,300-4,500箱体</div>
+  <div class="signal"><span class="dot dot-green"></span>宏观状态：经济放缓+通胀回落</div>
+</div>
+<div class="signal-row">
+  <div class="signal"><span class="dot dot-green"></span>资金状态：ETF温和流入</div>
+  <div class="signal"><span class="dot dot-yellow"></span>仓位状态：净多头回落至中性</div>
+  <div class="signal"><span class="dot dot-green"></span>叙事状态：去美元化/央行购金扩散期</div>
+</div>
+<div class="signal-row">
+  <div class="signal"><span class="dot dot-yellow"></span>风险溢价状态：地缘溢价中等偏高</div>
+</div>
+
+<table class="data-table">
+<tr><th>维度</th><th>状态</th><th>判断</th></tr>
+<tr><td>趋势</td><td>ATH $5,506 → $4,344（-20%），在$4,300-4,500箱体震荡</td><td>高位震荡</td></tr>
+<tr><td>价格结构</td><td>上方阻力$4,450/$4,500，下方支撑$4,310/$4,200</td><td>箱体运行</td></tr>
+<tr><td>宏观状态</td><td>GDP 1.5%放缓 + NFP负增长 + CPI回落至3.4%</td><td>经济放缓，利好黄金中期</td></tr>
+<tr><td>资金状态</td><td>全球黄金ETF 7月+23t，中国ETF 8月吸金83亿元</td><td>温和流入，尚未形成强趋势</td></tr>
+<tr><td>仓位状态</td><td>COMEX净多头~103K合约（6月数据），环比下降</td><td>中性偏低，非拥挤</td></tr>
+<tr><td>叙事状态</td><td>"央行去美元化"+"黄金超级周期"叙事处于扩散期</td><td>尚未极度拥挤</td></tr>
+<tr><td>风险溢价</td><td>中东地缘溢价+财政风险溢价存在，但已从高位回落</td><td>中等偏高</td></tr>
+</table>
+
+<!-- ========== 3. MACRO ========== -->
+<h2>3. 宏观环境</h2>
+
+<details open>
+<summary>Fed 美联储政策</summary>
+<div class="detail-content">
+  <table class="data-table">
+  <tr><th>指标</th><th>数值</th><th>日期</th><th>来源</th></tr>
+  <tr><td>Fed Funds Rate</td><td>3.50%-3.75%</td><td>2026-07 决议</td><td>Trading Economics</td></tr>
+  <tr><td>决议结果</td><td>维持不变（连续第5次）</td><td>2026-07</td><td>CBS News</td></tr>
+  <tr><td>分歧情况</td><td>3位委员异议，倾向小幅加息</td><td>2026-07</td><td>Trading Economics</td></tr>
+  <tr><td>9月加息概率</td><td>36%</td><td>2026-08-12 期货</td><td>Empower/联邦基金期货</td></tr>
+  <tr><td>9月维持概率</td><td>64%</td><td>2026-08-12 期货</td><td>Empower/联邦基金期货</td></tr>
+  </table>
+  <p class="src">来源：Trading Economics, CBS News, Empower.com (2026-08)</p>
+  
+  <div class="warn-box">
+    <p><strong>【Inference | 推断】</strong>Fed内部鹰派力量不可忽视——3位委员倾向加息，叠加7月CPI仍在3.4%，Fed并未明确转向宽松。市场定价64%维持 vs 36%加息，说明加息风险并未消除。</p>
+    <p><strong>关键判断：</strong>Fed当前处于"按兵不动但保留加息选项"状态。这与市场期望的"即将降息"存在显著差异。<span class="neutral">这个分歧尚未被黄金价格充分反映。</span></p>
+  </div>
+</div>
+</details>
+
+<!-- Fed Rate Probability Dashboard -->
+<div class="insight-box" style="border-color:#ffd70066;margin:20px 0">
+  <h3 style="margin-top:0;color:#ffd700">📊 Fed利率决议概率仪表盘</h3>
+  <p class="src" style="margin-bottom:12px">数据来源：CME FedWatch, 联邦基金期货 | 更新：2026-08-18</p>
+
+  <p style="font-size:0.9em;color:#ccc;margin-bottom:14px"><strong>下次决议：2026年9月16-17日 FOMC会议</strong>（当前利率 3.50%-3.75%）</p>
+
+  <p style="font-size:0.85em;color:#aaa;margin-bottom:6px">9月会议利率概率分布</p>
+  <div class="prob-bar">
+    <div class="prob-label"><span>维持不变 3.50-3.75%</span><span style="color:#00e676;font-weight:700">65.0%</span></div>
+    <div class="prob-track"><div class="prob-fill fill-bull" style="width:65%"></div></div>
+  </div>
+  <div class="prob-bar">
+    <div class="prob-label"><span>加息25bp → 3.75-4.00%</span><span style="color:#ff5252;font-weight:700">35.0%</span></div>
+    <div class="prob-track"><div class="prob-fill fill-bear" style="width:35%"></div></div>
   </div>
 
-  <!-- Driver 1: Warsh Fed hawkish -->
-  <div class="driver-accordion" onclick="this.classList.toggle('open')">
-    <div class="driver-header">
-      <div class="driver-rank r1">1</div>
-      <div class="driver-name">Warsh Fed 鹰派立场</div>
-      <span class="driver-impact" style="background:rgba(239,83,80,0.12); color:#ef5350;">强利空</span>
-      <div class="driver-chevron">▾</div>
-    </div>
-    <div class="driver-body">
-      <div class="driver-chain">
-        <div class="chain-step">
-          <div class="chain-node trigger">!</div>
-          <div class="chain-content">
-            <div class="chain-label">事实</div>
-            <div class="chain-text">Kevin Warsh 5月22日就任Fed主席。7月29日FOMC维持利率3.50%-3.75%不变，但3名委员投票要求加息。6月点阵图预期2026年加息1次。</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node effect">→</div>
-          <div class="chain-content">
-            <div class="chain-label">直接传导</div>
-            <div class="chain-text">加息预期 → 持有黄金机会成本上升 → 10Y收益率高位运行(4.71%) → 对黄金形成持续逆风</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node effect">→</div>
-          <div class="chain-content">
-            <div class="chain-label">二阶效应</div>
-            <div class="chain-text">Warsh声明"通胀仍高于2%目标" → 市场定价加息而非降息 → 美元获得支撑(DXY 99.67) → 进一步压制黄金</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node result">$</div>
-          <div class="chain-content">
-            <div class="chain-label">价格影响</div>
-            <div class="chain-text">Fed鹰派是黄金当前最大逆风。若实际加息落地，黄金可能再跌$100-200</div>
-          </div>
-        </div>
-        <div class="chain-summary">
-          <div class="summary-label">数据来源</div>
-          <div class="summary-text">Federal Reserve (fomcpresconf20260729, monetary20260617a), Trading Economics (利率3.75%), CNBC (6/17 Warsh abstained), Reuters (7/29 三人dissent for hike)</div>
-        </div>
+  <p style="font-size:0.85em;color:#aaa;margin:14px 0 6px">10月会议利率概率分布</p>
+  <div class="prob-bar">
+    <div class="prob-label"><span>维持不变</span><span style="color:#00e676;font-weight:700">51.4%</span></div>
+    <div class="prob-track"><div class="prob-fill fill-bull" style="width:51.4%"></div></div>
+  </div>
+  <div class="prob-bar">
+    <div class="prob-label"><span>加息25bp</span><span style="color:#ff9800;font-weight:700">41.3%</span></div>
+    <div class="prob-track"><div class="prob-fill fill-base" style="width:41.3%"></div></div>
+  </div>
+  <div class="prob-bar">
+    <div class="prob-label"><span>加息50bp</span><span style="color:#ff5252;font-weight:700">7.4%</span></div>
+    <div class="prob-track"><div class="prob-fill fill-bear" style="width:7.4%"></div></div>
+  </div>
+
+  <p style="font-size:0.85em;color:#aaa;margin:14px 0 6px">12月会议利率概率分布</p>
+  <div class="prob-bar">
+    <div class="prob-label"><span>维持不变</span><span style="color:#00e676;font-weight:700">32.8%</span></div>
+    <div class="prob-track"><div class="prob-fill fill-bull" style="width:32.8%"></div></div>
+  </div>
+  <div class="prob-bar">
+    <div class="prob-label"><span>至少加息一次</span><span style="color:#ff5252;font-weight:700">67.2%</span></div>
+    <div class="prob-track"><div class="prob-fill fill-bear" style="width:67.2%"></div></div>
+  </div>
+
+  <div style="margin:20px 0 10px;border-top:1px solid #333;padding-top:14px">
+    <p style="font-size:0.9em;color:#ffd700;font-weight:600;margin-bottom:10px">9月加息概率变化轨迹（关键事件前后）</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">8月1日（NFP前）</div>
+        <div class="tl-text">加息概率 ~<strong style="color:#ff5252">58%</strong> / 维持 ~42%</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">8月1日 NFP公布（-23K）</div>
+        <div class="tl-text">加息概率骤降至 ~<strong style="color:#ff9800">40%</strong> / 维持 ~60%<br><span style="color:#888;font-size:0.85em">↓18pp — 就业负增长大幅削弱加息预期</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">8月12日（CPI前）</div>
+        <div class="tl-text">加息概率回升至 <strong style="color:#ff9800">45.9%</strong> / 维持 ~54.1%</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">8月13日 CPI公布（3.4%）</div>
+        <div class="tl-text">加息概率微降至 <strong style="color:#ff9800">44.1%</strong> / 维持 ~55.9%<br><span style="color:#888;font-size:0.85em">↓1.8pp — CPI符合预期，影响有限</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">8月18日（当前）</div>
+        <div class="tl-text">加息概率 <strong style="color:#00e676">35.0%</strong> / 维持 <strong>65.0%</strong><br><span style="color:#888;font-size:0.85em">较CPI后继续回落9.1pp，市场逐步消化维持预期</span></div>
       </div>
     </div>
   </div>
 
-  <!-- Driver 2: Central bank + ETF -->
-  <div class="driver-accordion" onclick="this.classList.toggle('open')">
-    <div class="driver-header">
-      <div class="driver-rank r2">2</div>
-      <div class="driver-name">央行购金 + ETF回流</div>
-      <span class="driver-impact" style="background:rgba(76,175,80,0.12); color:#4caf50;">结构性利多</span>
-      <div class="driver-chevron">▾</div>
-    </div>
-    <div class="driver-body">
-      <div class="driver-chain">
-        <div class="chain-step">
-          <div class="chain-node trigger">!</div>
-          <div class="chain-content">
-            <div class="chain-label">事实 (WGC 8/14, 8/6发布)</div>
-            <div class="chain-text">PBOC 7月增持20吨黄金，连续第21个月购买，总持2,366吨。7月全球黄金ETF净流入$3B(+23吨)，总持仓4,068吨，AUM $530B</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node effect">→</div>
-          <div class="chain-content">
-            <div class="chain-label">结构拆解</div>
-            <div class="chain-text">ETF: 欧洲+$2B | 亚洲+$616M | 北美仅+$71M | 其他+$140M → 西方主力刚开始回流，远未拥挤</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node effect">→</div>
-          <div class="chain-content">
-            <div class="chain-label">底盘支撑</div>
-            <div class="chain-text">央行购金提供长期价格底盘($3,800-$4,000)。ETF确认资金面支撑，非纯投机驱动</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node result">$</div>
-          <div class="chain-content">
-            <div class="chain-label">价格影响</div>
-            <div class="chain-text">央行+ETF构成黄金的"铁底"。即使Fed加息，底盘支撑使黄金难以跌破$4,000</div>
-          </div>
-        </div>
-        <div class="chain-summary">
-          <div class="summary-label">数据来源</div>
-          <div class="summary-text">World Gold Council (gold.org, 8/14发布PBOC数据, 8/6发布ETF数据)。PBOC 21月连增经Reuters (4/7 第17月)交叉验证。</div>
-        </div>
-      </div>
-    </div>
+  <div style="margin:14px 0;border-top:1px solid #333;padding-top:14px">
+    <p style="font-size:0.9em;color:#ffd700;font-weight:600;margin-bottom:10px"> upcoming 关键催化剂</p>
+    <table class="data-table">
+    <tr><th>日期</th><th>事件</th><th>对加息概率影响</th></tr>
+    <tr><td>8/19-22</td><td>FOMC会议纪要发布</td><td>高 — 若纪要显示更多鹰派分歧，加息概率可能回升</td></tr>
+    <tr><td>8/22</td><td>Jackson Hole年会</td><td>高 — Fed主席讲话可能引导市场预期</td></tr>
+    <tr><td>8/29</td><td>Core PCE（6月）</td><td>中 — 若高于3.3%预期，加息概率上升</td></tr>
+    <tr><td>9/5</td><td>8月NFP</td><td>高 — 若再次负增长，加息概率可能大幅回落</td></tr>
+    <tr><td>9/16-17</td><td>FOMC会议 & 利率决议</td><td>极高 — 最终定价时刻</td></tr>
+    </table>
   </div>
 
-  <!-- Driver 3: Geopolitical compression -->
-  <div class="driver-accordion" onclick="this.classList.toggle('open')">
-    <div class="driver-header">
-      <div class="driver-rank r3">3</div>
-      <div class="driver-name">伊朗停火 · 地缘溢价压缩</div>
-      <span class="driver-impact" style="background:rgba(239,83,80,0.12); color:#ef5350;">利空释放中</span>
-      <div class="driver-chevron">▾</div>
-    </div>
-    <div class="driver-body">
-      <div class="driver-chain">
-        <div class="chain-step">
-          <div class="chain-node trigger">!</div>
-          <div class="chain-content">
-            <div class="chain-label">事实</div>
-            <div class="chain-text">2026年伊朗冲突后达成停火。5月底黄金因停火乐观反弹，但7月8日Trump称协议"结束"后黄金走低。地缘溢价从高点持续压缩</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node effect">→</div>
-          <div class="chain-content">
-            <div class="chain-label">传导</div>
-            <div class="chain-text">中东局势从热战→停火→谈判 → 避险需求趋势性下降 → 黄金地缘溢价估计$50-100正在被挤出</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node effect">→</div>
-          <div class="chain-content">
-            <div class="chain-label">油价传导</div>
-            <div class="chain-text">Brent从冲突高位回落至$91企稳 → 能源通胀压力缓解 → 但Fed仍因CPI 3.4%偏鹰</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node result">$</div>
-          <div class="chain-content">
-            <div class="chain-label">价格影响</div>
-            <div class="chain-text">地缘溢价压缩是近期回调的主因之一。若中东再次升级，溢价可能快速回归</div>
-          </div>
-        </div>
-        <div class="chain-summary">
-          <div class="summary-label">数据来源</div>
-          <div class="summary-text">Reuters (7/8 "Gold drifts lower after Trump says deal with Iran is over"), CNBC (5/29 "Gold gains on U.S.-Iran ceasefire optimism"), Britannica/CSIS/CFR (2026 Iran war)</div>
-        </div>
-      </div>
-    </div>
+  <div class="warn-box" style="margin-top:14px">
+    <p><strong>【Inference | 推断】</strong>加息概率从NFP前的58%持续回落至当前35%，显示劳动力市场恶化正在系统性削弱Fed加息预期。但35%仍非可忽略的概率——若8/29 Core PCE超预期或Jackson Hole释放鹰派信号，加息概率可能快速反弹至45%+。</p>
+    <p><strong>对黄金影响：</strong>加息概率每下降10pp，对黄金构成约$30-50/oz的边际利好（通过实债率渠道）。当前趋势对黄金温和利好，但尚未到"加息预期消除"的程度。</p>
   </div>
+  <p class="src">来源：CME FedWatch via fx678.com, QQ News/财闻, Sina Finance/财联社, CLS, 10jqka (2026-08)</p>
+</div>
 
-  <!-- Driver 4: Inflation -->
-  <div class="driver-accordion" onclick="this.classList.toggle('open')">
-    <div class="driver-header">
-      <div class="driver-rank r4">4</div>
-      <div class="driver-name">CPI 3.4% 通胀偏高</div>
-      <span class="driver-impact" style="background:rgba(239,83,80,0.12); color:#ef5350;">双向影响</span>
-      <div class="driver-chevron">▾</div>
-    </div>
-    <div class="driver-body">
-      <div class="driver-chain">
-        <div class="chain-step">
-          <div class="chain-node trigger">!</div>
-          <div class="chain-content">
-            <div class="chain-label">事实 (BLS 8/12发布)</div>
-            <div class="chain-text">7月CPI同比3.4%，核心CPI 2.5%。Fed声明称"通胀仍高于2%目标"，部分源于"供给冲击推升的特定领域价格上涨(燃油)"</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node effect">→</div>
-          <div class="chain-content">
-            <div class="chain-label">双向传导</div>
-            <div class="chain-text">通胀高 → 理论上利好黄金(保值) → 但当前Fed选择加息抗通胀 → 实际利率上行 → 反而利空黄金</div>
-          </div>
-        </div>
-        <div class="chain-arrow">↓</div>
-        <div class="chain-step">
-          <div class="chain-node result">$</div>
-          <div class="chain-content">
-            <div class="chain-label">价格影响</div>
-            <div class="chain-text">当前环境下，高CPI → 更多加息 → 对黄金是利空而非利多。除非Fed转向容忍通胀</div>
-          </div>
-        </div>
-        <div class="chain-summary">
-          <div class="summary-label">数据来源</div>
-          <div class="summary-text">BLS (CPI Summary M07 2026, bls.gov), Trading Economics (CPI 3.4%, 8/12发布)</div>
-        </div>
-      </div>
-    </div>
+<details>
+<summary>CPI / PCE 通胀</summary>
+<div class="detail-content">
+  <table class="data-table">
+  <tr><th>指标</th><th>数值</th><th>日期</th><th>来源</th></tr>
+  <tr><td>CPI YoY</td><td>3.4%</td><td>2026-07</td><td>Sina Finance / BLS</td></tr>
+  <tr><td>CPI MoM</td><td>0.1%</td><td>2026-07</td><td>Sina Finance / BLS</td></tr>
+  <tr><td>Core CPI YoY</td><td>2.5%</td><td>2026-07</td><td>Sina Finance / BLS</td></tr>
+  <tr><td>Core CPI MoM</td><td>0.2%</td><td>2026-07</td><td>Sina Finance / BLS</td></tr>
+  <tr><td>Core PCE YoY</td><td>3.3%</td><td>2026-06</td><td>Futunn / BEA</td></tr>
+  <tr><td>Core PCE MoM</td><td>0.1%</td><td>2026-06</td><td>CFI / BEA</td></tr>
+  </table>
+  <p class="src">来源：Sina Finance (CPI), Futunn/CFI (PCE), 数据原始发布方为BLS/BEA</p>
+  
+  <p><strong>【Fact | 事实】</strong>CPI从高位回落至3.4%，核心CPI降至2.5%，PCE月环比仅0.1%，通胀整体处于回落通道。但CPI同比3.4%仍高于Fed 2%目标，核心PCE 3.3%亦偏高。</p>
+  <p><strong>【Inference | 推断】</strong>通胀回落但粘性犹存——这限制了Fed降息空间，也意味着实际利率短期内难以大幅下降。对黄金：温和利好（通胀预期支撑）但也限制了降息催化的上涨空间。</p>
+</div>
+</details>
+
+<details>
+<summary>Employment 就业</summary>
+<div class="detail-content">
+  <table class="data-table">
+  <tr><th>指标</th><th>数值</th><th>日期</th><th>来源</th></tr>
+  <tr><td>NFP</td><td>-23,000（负增长）</td><td>2026-07</td><td>Straits Times / BLS</td></tr>
+  <tr><td>Unemployment Rate</td><td>4.1%</td><td>2026-07</td><td>Straits Times / BLS</td></tr>
+  <tr><td>前值NFP（2月）</td><td>-92,000</td><td>2026-02</td><td>Economic Times / BLS</td></tr>
+  <tr><td>前值失业率（2月）</td><td>4.4%</td><td>2026-02</td><td>Economic Times / BLS</td></tr>
+  </table>
+  <p class="src">来源：Straits Times, Economic Times, SMM (2026-07/08), 原始数据为BLS</p>
+  
+  <div class="insight-box">
+    <p><strong>【Fact | 事实】</strong>7月NFP意外负增长-23K，大幅低于预期。这是继2月-92K后再次出现负增长。失业率从4.4%回落至4.1%（可能有统计因素），但就业绝对数量在减少。</p>
+    <p><strong>【Inference | 推断】</strong>美国劳动力市场正在实质性恶化。GDP已降至1.5%（Q2），叠加就业负增长，经济接近滞胀边缘。这是黄金中期最重要的结构性利好之一——经济恶化最终将迫使Fed宽松。</p>
+    <p><strong>关键判断：</strong>增长下降 + 通胀下降 = 通常利好黄金（Fed被迫宽松）。但如果通胀重新加速（油价推动），则可能形成滞胀，对黄金影响变为双向。</p>
+  </div>
+</div>
+</details>
+
+<details>
+<summary>Treasury / Real Yield 美债与实际利率</summary>
+<div class="detail-content">
+  <table class="data-table">
+  <tr><th>指标</th><th>数值</th><th>日期</th><th>来源</th></tr>
+  <tr><td>2Y Yield</td><td>4.18%</td><td>2026-08-18</td><td>Trading Economics</td></tr>
+  <tr><td>10Y Yield</td><td>4.68%</td><td>2026-08-18</td><td>Trading Economics</td></tr>
+  <tr><td>2s10s利差</td><td>+53bp（正常化）</td><td>计算值</td><td>—</td></tr>
+  <tr><td>10Y Real Yield（推断）</td><td>~1.7-2.0%</td><td>推断</td><td>名义-盈亏平衡推断</td></tr>
+  <tr><td>Term Premium</td><td>~0.5%</td><td>2026-08</td><td>Empower.com</td></tr>
+  </table>
+  <p class="src">来源：Trading Economics (名义收益率), Empower.com (期限溢价)。实际收益率为推断值，非直接观测数据。</p>
+  
+  <p><strong>【Inference | 推断】</strong>名义收益率4.68%处于高位。拆解：实际利率~1.7-2.0%（偏高，对黄金逆风）+ 盈亏平衡通胀~2.7-3.0%（温和，对黄金有一定支撑）。</p>
+  <p><strong>关键判断：</strong>实际利率维持高位是当前黄金最大的逆风因素。黄金自ATH $5,506回调至$4,344，与实债率维持高位的时段一致。黄金要重新走强，需要实债率明确转向下行。</p>
+  <p><strong>⚠️ 注意：</strong>10Y实际收益率数值为推断值（名义收益率减去隐含通胀预期），非FRED/DFII10直接数据。精度有限，降低该数据权重。</p>
+</div>
+</details>
+
+<details>
+<summary>Dollar 美元</summary>
+<div class="detail-content">
+  <table class="data-table">
+  <tr><th>指标</th><th>数值</th><th>日期</th><th>来源</th></tr>
+  <tr><td>DXY</td><td>99.85</td><td>2026-08-12</td><td>cngold.org</td></tr>
+  </table>
+  <p class="src">来源：cngold.org (2026-08-12)</p>
+  
+  <p><strong>【Fact | 事实】</strong>DXY跌破100关口至99.85，美元处于相对弱势。经济数据削弱加息预期，资金回流非美资产。</p>
+  <p><strong>【Inference | 推断】</strong>美元走弱对黄金构成顺风。DXY从100以上跌至99.85，与黄金从高位回调后企稳的时间窗口一致。但需注意：若Fed 9月加息，DXY可能反弹至102+，将构成黄金重大逆风。</p>
+  <p><strong>判断：</strong>美元当前对黄金 Neutral to Slight Bullish。跌破100是利好，但99.85并非深度弱势，仍有反弹空间。</p>
+</div>
+</details>
+
+<details>
+<summary>Liquidity 流动性</summary>
+<div class="detail-content">
+  <p><strong>【数据不足】</strong>Fed资产负债表、TGA、Reverse Repo等最新高频数据未通过搜索获取可靠数值。降低流动性模块权重。</p>
+  <p>已知信息：Q2 GDP 1.5%，经济增长放缓。Fed维持利率不变，未进行新的QE/QT调整。<span class="neutral">流动性数据不足，因此降低该变量权重。</span></p>
+</div>
+</details>
+
+<!-- ========== 4. CORE DRIVERS ========== -->
+<h2>4. 黄金核心驱动力排序</h2>
+
+<table class="data-table">
+<tr><th>排名</th><th>驱动力</th><th>方向</th><th>强度</th><th>性质</th></tr>
+<tr><td>1</td><td>央行结构性购金</td><td class="up">Bullish</td><td>强</td><td>真正驱动力（长期底盘）</td></tr>
+<tr><td>2</td><td>美元走弱（DXY<100）</td><td class="up">Bullish</td><td>中</td><td>真正驱动力</td></tr>
+<tr><td>3</td><td>地缘政治风险溢价</td><td class="up">Bullish</td><td>中</td><td>伴随变量（脉冲式）</td></tr>
+<tr><td>4</td><td>经济放缓/NFP负增长</td><td class="up">Bullish</td><td>中</td><td>中期驱动力（尚未充分定价）</td></tr>
+<tr><td>5</td><td>实际利率高企（~2%）</td><td class="down">Bearish</td><td>强</td><td>真正驱动力（最大逆风）</td></tr>
+<tr><td>6</td><td>ETF资金流入</td><td class="up">Bullish</td><td>弱-中</td><td>确认信号（尚未强趋势）</td></tr>
+<tr><td>7</td><td>Fed加息风险（36%）</td><td class="down">Bearish</td><td>中</td><td>潜在驱动力（尾部风险）</td></tr>
+</table>
+
+<div class="insight-box">
+  <p><strong>关键判断：</strong>当前黄金市场处于"结构性利好 vs 周期性逆风"的拉锯状态。央行购金和美元走弱提供底部支撑，但实际利率高企和Fed鹰派风险限制上涨空间。</p>
+  <p><strong>叙事 vs 事实：</strong>"黄金超级周期"叙事仍在扩散，但价格已从$5,506回调至$4,344（-20%），说明叙事尚未转化为持续的边际买盘。央行买盘是真实的结构性力量，但不能直接作为短线买入信号。</p>
+</div>
+
+<!-- ========== 5. ETF / CFTC ========== -->
+<h2>5. ETF / CFTC / Positioning</h2>
+
+<details open>
+<summary>黄金ETF资金流</summary>
+<div class="detail-content">
+  <table class="data-table">
+  <tr><th>指标</th><th>数值</th><th>日期</th><th>来源</th></tr>
+  <tr><td>全球黄金ETF流入</td><td>+23吨 / +$3B</td><td>2026-07</td><td>World Gold Council</td></tr>
+  <tr><td>全球黄金ETF总持仓</td><td>4,068吨</td><td>2026-07末</td><td>World Gold Council</td></tr>
+  <tr><td>YTD累计流入</td><td>+39吨</td><td>2026-07末</td><td>World Gold Council</td></tr>
+  <tr><td>中国黄金ETF 8月吸金</td><td>83.46亿元人民币</td><td>至2026-08-14</td><td>Sina Finance / 东方财富</td></tr>
+  <tr><td>其中现货黄金ETF</td><td>54.66亿元</td><td>至2026-08-14</td><td>Sina Finance</td></tr>
+  <tr><td>其中黄金股票ETF</td><td>28.80亿元</td><td>至2026-08-14</td><td>Sina Finance</td></tr>
+  </table>
+  <p class="src">来源：World Gold Council (gold.org), Sina Finance, 东方财富 (2026-08)</p>
+  
+  <p><strong>【Fact | 事实】</strong>7月全球黄金ETF温和流入+23吨/$3B，YTD+39吨。中国黄金ETF 8月大幅吸金83.46亿元，显示东方投资者配置意愿强烈。</p>
+  <p><strong>【Inference | 推断】</strong>"西方边际资金是否正在回来？" — 答案是：温和回归但尚未形成趋势。全球+23t/月属于正常偏高水平，不是爆发式流入。中国ETF资金大幅涌入是亮点，但主要是散户/国内机构驱动。</p>
+  <p><strong>价格↑ + ETF流入↑ = Bullish Confirmation（温和版）</strong>。但流入强度不足以确认强趋势。</p>
+</div>
+</details>
+
+<details>
+<summary>CFTC / 仓位</summary>
+<div class="detail-content">
+  <table class="data-table">
+  <tr><th>指标</th><th>数值</th><th>日期</th><th>来源</th></tr>
+  <tr><td>COMEX净多头</td><td>~103,660份合约</td><td>截至2026-06-09</td><td>CFTC / fx678</td></tr>
+  <tr><td>周变化</td><td>-7,681份合约</td><td>该周</td><td>CFTC / fx678</td></tr>
+  </table>
+  <p class="src">来源：CFTC via fx678.com, xueqiu.com (2026-06)。注意：最新可得数据截至6月，存在约2个月滞后。</p>
+  
+  <div class="warn-box">
+    <p><strong>⚠️ 数据滞后警告：</strong>CFTC最新可得数据截至2026年6月9日，与当前价格存在约2个月时差。6月以来黄金经历了显著波动，当前仓位可能已大幅变化。降低该数据权重。</p>
+  </div>
+  <p><strong>【Inference | 推断】</strong>净多头从高位回落7,681份合约至~103K，说明Managed Money在去杠杆。标题"CFTC黄金多头退潮"印证了这一趋势。仓位从极端拥挤回归中性，减少了多头踩踏风险，但也说明推动价格上涨的投机力量在减弱。</p>
+</div>
+</details>
+
+<!-- ========== 6. NARRATIVE ========== -->
+<h2>6. Narrative Risk 叙事风险</h2>
+
+<div class="insight-box">
+  <p><strong>当前市场最大的故事：</strong>"央行去美元化 + 黄金超级周期 + 全球财政失控"</p>
+  <p><strong>叙事阶段：</strong>扩散期 → 接近市场共识。这个叙事已经存在12-18个月，价格从$3,000涨到$5,506再回调至$4,344。</p>
+  <p><strong>已Price In多少？</strong>央行持续购金（已被充分定价）、美元长期走弱（部分定价）、地缘风险溢价（部分定价）。</p>
+  <p><strong>还有多少新信息空间？</strong>中等。如果PBOC购金加速或新的央行加入，叙事还有扩散空间。如果购金放缓，叙事可能开始失效。</p>
+  <p><strong>什么情况下故事开始失效？</strong>央行购金数据连续2-3个月显著下降 + 美元重新走强 + 地缘风险缓和。这将导致"黄金超级周期"叙事瓦解，风险溢价压缩。</p>
+</div>
+
+<!-- ========== 7. REFLEXIVITY ========== -->
+<h2>7. Reflexivity 反身性</h2>
+
+<div class="signal-row">
+  <div class="signal"><span class="dot dot-yellow"></span>当前反身性状态：Neutral to Slight Positive</div>
+</div>
+
+<p>黄金从$5,506回调至$4,344的过程中，反身性机制正在重置：</p>
+<p><strong>正向反身性（已减弱）：</strong>$3,000→$5,506阶段，价格上涨→媒体关注→ETF流入→更多买入→继续上涨。这个循环在ATH处断裂。</p>
+<p><strong>当前状态：</strong>价格回调20%后，负向反身性风险已释放（ETF仍在流入，非恐慌性流出）。但正向反身性尚未重新启动——需要价格突破$4,500阻力 + ETF加速流入才能确认。</p>
+<p><strong>判断：</strong>中性。市场处于反身性的"真空期"，方向性反馈循环尚未建立。</p>
+
+<!-- ========== 8. EXECUTION RISK ========== -->
+<h2>8. Execution Risk 执行风险</h2>
+
+<div class="warn-box">
+  <p><strong>当前Bullish逻辑为什么可能无法转化成上涨？</strong></p>
+  <p>1. <strong>实际利率不配合：</strong>即使经济放缓，CPI仍在3.4%，Fed无法降息。实债率~2%持续压制黄金估值。</p>
+  <p>2. <strong>ETF流入不够强：</strong>+23t/月属于正常水平，不是"资金涌入"。价格需要更强的边际买盘才能突破$4,500。</p>
+  <p>3. <strong>Fed加息尾部风险：</strong>36%的加息概率不可忽视。如果9月加息，黄金可能快速下探$4,200。</p>
+  <p>4. <strong>中国ETF买盘可持续性存疑：</strong>8月83亿元流入很强，但这主要是散户驱动，是否可持续取决于价格表现。如果黄金回调，散户可能快速转向赎回。</p>
+  <p>5. <strong>好消息无法推动价格上涨：</strong>NFP负增长（理论上利好黄金），但黄金仅在$4,344-4,430区间波动，说明市场更关注实债率和Fed政策而非就业数据。</p>
+</div>
+
+<!-- ========== 9. RISK PREMIUM ========== -->
+<h2>9. Risk Premium 风险溢价</h2>
+
+<table class="data-table">
+<tr><th>风险溢价类型</th><th>当前估计</th><th>趋势</th><th>判断</th></tr>
+<tr><td>地缘政治溢价</td><td>中等偏高</td><td>从高位回落</td><td>中东局势仍在，但市场已部分适应</td></tr>
+<tr><td>财政风险溢价</td><td>偏高</td><td>持续</td><td>美国债务问题长期存在</td></tr>
+<tr><td>美元信用溢价</td><td>中等</td><td>DXY<100支撑</td><td>去美元化叙事支撑</td></tr>
+<tr><td>央行储备多元化溢价</td><td>高</td><td>结构性</td><td>PBOC连续21个月增持，最稳定的溢价来源</td></tr>
+<tr><td>通胀风险溢价</td><td>中等</td><td>CPI回落中</td><td>随通胀下降而收窄</td></tr>
+</table>
+
+<p><strong>如果某个风险消失：</strong>中东停火→地缘溢价下降约$50-100；Fed明确转鸽→实债率下降，但当前Fed并未转鸽；央行购金放缓→结构性溢价下降，这是最大的风险。</p>
+
+<!-- ========== 10. EXPECTATION GAP ========== -->
+<h2>10. Expectation Gap 预期差</h2>
+
+<div class="insight-box">
+  <h3>Market Expectations 市场预期</h3>
+  <p>市场定价：Fed大概率维持利率不变（64%），经济温和放缓，通胀继续回落，央行持续购金，地缘风险可控。</p>
+  
+  <h3>Reality 现实</h3>
+  <p>NFP已转负（-23K），GDP仅1.5%，CPI仍在3.4%，Fed内部3人倾向加息，PBOC购金加速（21个月连买），中东局势仍紧张。</p>
+  
+  <h3>Gap 差异</h3>
+  <p><strong>关键差异：</strong>市场认为经济"温和放缓"，但NFP -23K暗示可能是"显著恶化"。这个差异尚未被黄金价格充分反映。</p>
+</div>
+
+<table class="data-table">
+<tr><th>预期差类型</th><th>内容</th></tr>
+<tr><td class="up">最大正向预期差</td><td>NFP持续负增长 → Fed被迫紧急降息 → 实债率暴跌 → 黄金重新暴涨。市场尚未定价"经济衰退"情景。</td></tr>
+<tr><td class="down">最大负向预期差</td><td>CPI重新加速（油价推动）→ Fed加息 → 实债率突破2.5% → 黄金跌破$4,000。市场低估了通胀粘性+Fed鹰派组合。</td></tr>
+<tr><td class="neutral">最大隐藏预期差</td><td>中国ETF资金持续大量涌入（8月83亿元）→ 东方散户/机构成为边际定价力量 → 黄金在西方机构犹豫时被东方资金推升。</td></tr>
+<tr><td class="neutral">最大潜在反转预期差</td><td>中东全面停火 → 地缘溢价+油价溢价同时消失 → 通胀预期下降但避险需求也下降 → 黄金短期可能先涨（通胀降）后跌（避险消失）。</td></tr>
+</table>
+
+<!-- ========== 11. TECHNICAL ========== -->
+<h2>11. 技术结构</h2>
+
+<table class="data-table">
+<tr><th>水平</th><th>价位</th><th>意义</th></tr>
+<tr><td>ATH</td><td>$5,506</td><td>2026年1月历史高点</td></tr>
+<tr><td>强阻力</td><td>$4,500</td><td>心理关口 + 箱体上沿</td></tr>
+<tr><td>阻力区</td><td>$4,430-4,450</td><td>密集压力区（8月18日晚盘数据）</td></tr>
+<tr><td>当前价</td><td>$4,344</td><td>—</td></tr>
+<tr><td>短线分水岭</td><td>$4,370-4,385</td><td>多空分界</td></tr>
+<tr><td>核心支撑</td><td>$4,310-4,320</td><td>箱体下沿防线</td></tr>
+<tr><td>强支撑</td><td>$4,200</td><td>跌破则打开更大下行空间</td></tr>
+</table>
+
+<p><strong>突破确认条件：</strong>放量突破$4,450 + ETF单日流入>$500M + OI增加 → 确认向上突破，目标$4,500-4,600。</p>
+<p><strong>假突破条件：</strong>突破$4,450但ETF不流入 + OI下降 + 实债率不降 → 假突破，回落至$4,300。</p>
+<p><strong>趋势失效条件：</strong>跌破$4,200 + 200日均线 → 中期趋势转为Bearish。</p>
+<p class="src">来源：cngold.org 晚盘行情分析 (2026-08-18)</p>
+
+<!-- ========== 12. PRICE + FLOW + POSITIONING + MACRO ========== -->
+<h2>12. 四维确认矩阵</h2>
+
+<div class="dashboard">
+  <div class="card">
+    <div class="card-label">价格 Price</div>
+    <div class="card-value neutral">$4,344</div>
+    <div class="card-delta neutral">震荡（箱体）</div>
+  </div>
+  <div class="card">
+    <div class="card-label">资金流 Flow</div>
+    <div class="card-value up">+23t/月</div>
+    <div class="card-delta up">温和流入</div>
+  </div>
+  <div class="card">
+    <div class="card-label">仓位 Positioning</div>
+    <div class="card-value neutral">~103K</div>
+    <div class="card-delta down">净多头回落</div>
+  </div>
+  <div class="card">
+    <div class="card-label">宏观 Macro</div>
+    <div class="card-value up">放缓</div>
+    <div class="card-delta up">利好中期</div>
   </div>
 </div>
 
-<!-- ===== SCENARIOS ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(76,175,80,0.15); color: #4caf50;">◎</span>
-    Bull / Base / Bear
+<div class="insight-box">
+  <p><strong>四者是否共振：</strong>不完全共振。价格（中性）+ 资金流（温和利好）+ 仓位（中性偏低）+ 宏观（利好中期）= 信号方向一致但强度不足。</p>
+  <p><strong>判断：</strong>当前市场信号存在温和的Bullish偏向，但缺乏强共振。需要至少2个维度转为强Bullish信号（如ETF大幅流入 + 价格突破$4,500）才能确认上涨趋势。</p>
+</div>
+
+<!-- ========== 13. BULL / BASE / BEAR ========== -->
+<h2>13. Bull / Base / Bear 情景分析</h2>
+
+<div class="prob-bar">
+  <div class="prob-label"><span class="up">Bull Case (25%)</span><span>$4,800-5,000</span></div>
+  <div class="prob-track"><div class="prob-fill fill-bull" style="width:25%"></div></div>
+</div>
+<div class="prob-bar">
+  <div class="prob-label"><span class="neutral">Base Case (50%)</span><span>$4,200-4,500</span></div>
+  <div class="prob-track"><div class="prob-fill fill-base" style="width:50%"></div></div>
+</div>
+<div class="prob-bar">
+  <div class="prob-label"><span class="down">Bear Case (25%)</span><span>$3,800-4,200</span></div>
+  <div class="prob-track"><div class="prob-fill fill-bear" style="width:25%"></div></div>
+</div>
+
+<details>
+<summary>Bull Case 看涨情景 — 概率 25%</summary>
+<div class="detail-content">
+  <p><strong>触发条件：</strong></p>
+  <p>1. NFP持续负增长，失业率突破4.5%，经济进入衰退</p>
+  <p>2. Fed被迫紧急降息或重启QE，实债率快速下行</p>
+  <p>3. 中东局势升级（伊朗冲突扩大），避险资金涌入黄金</p>
+  <p><strong>价格逻辑：</strong>经济衰退→Fed宽松→实债率暴跌→黄金重新定价至$4,800-5,000。叠加避险溢价，可能挑战前高。</p>
+  <p><strong>哪些数据必须配合：</strong>NFP连续3个月负增长 + CPI跌破2.5% + 10Y实债率跌破1.5% + ETF月流入>50t</p>
+</div>
+</details>
+
+<details open>
+<summary>Base Case 基准情景 — 概率 50%</summary>
+<div class="detail-content">
+  <p><strong>条件：</strong></p>
+  <p>宏观：经济继续放缓但不衰退，GDP 1-1.5%，CPI 2.5-3.5%</p>
+  <p>资金：ETF温和流入（20-30t/月），央行购金持续</p>
+  <p>地缘：中东紧张但不升级，风险溢价维持</p>
+  <p>实债率：维持1.7-2.2%区间</p>
+  <p><strong>结果：</strong>黄金在$4,200-4,500箱体震荡，等待方向催化剂。</p>
+  <p><strong>预计市场状态：</strong>震荡。</p>
+</div>
+</details>
+
+<details>
+<summary>Bear Case 看跌情景 — 概率 25%</summary>
+<div class="detail-content">
+  <p><strong>触发条件：</strong></p>
+  <p>1. CPI重新加速（油价冲击），Fed被迫加息至4.0%+</p>
+  <p>2. 10Y实债率突破2.5%，对黄金形成强力压制</p>
+  <p>3. 央行购金显著放缓（PBOC暂停购金），结构性溢价瓦解</p>
+  <p>4. DXY重回103+，美元全面走强</p>
+  <p><strong>什么因素破坏黄金逻辑：</strong></p>
+  <p>1. "通胀重新加速 → Fed加息"组合将直接击穿黄金牛市逻辑</p>
+  <p>2. 央行购金是过去2年黄金最重要的结构性支撑，如果这个消失，牛市基础将动摇</p>
+  <p>3. ETF连续净流出 + Managed Money大幅去杠杆</p>
+  <p><strong>结果：</strong>黄金跌破$4,200支撑，下探$3,800-4,000区间。</p>
+</div>
+</details>
+
+<!-- ========== 14. RISK / REWARD ========== -->
+<h2>14. Risk / Reward</h2>
+
+<table class="data-table">
+<tr><th>项目</th><th>数值</th></tr>
+<tr><td>当前价格 P</td><td>$4,344</td></tr>
+<tr><td>Bull目标 B (Base上沿)</td><td>$4,500</td></tr>
+<tr><td>Bull目标 B (Bull Case)</td><td>$4,800</td></tr>
+<tr><td>Bear目标 S</td><td>$4,200</td></tr>
+<tr><td>Bear目标 S (Bear Case)</td><td>$3,800</td></tr>
+<tr><td>上行空间（Base）</td><td>+2.5%（$110）</td></tr>
+<tr><td>上行空间（Bull）</td><td>+9.3%（$410）</td></tr>
+<tr><td>下行空间（Base）</td><td>-4.3%（$190）</td></tr>
+<tr><td>下行空间（Bear）</td><td>-13.4%（$590）</td></tr>
+<tr><td>Risk/Reward（Base vs Base）</td><td>0.58:1（不佳）</td></tr>
+<tr><td>Risk/Reward（Bull vs Bear, 概率加权）</td><td>约0.8:1</td></tr>
+</table>
+
+<div class="warn-box">
+  <p><strong>判断：</strong>当前Risk/Reward不佳。Base case的上行空间有限（+2.5%），而下行风险更大（-4.3%至-13.4%）。</p>
+  <p><strong>是否适合追涨：</strong>不适合。上行空间小 + 下行风险大 = 追涨风险收益比差。</p>
+  <p><strong>是否适合回调买入：</strong>在$4,200附近可以考虑轻仓买入（止损$4,100），但需要等待实债率信号配合。当前$4,344不是理想的入场位。</p>
+</div>
+
+<!-- ========== 15. CATALYSTS ========== -->
+<h2>15. 未来催化剂</h2>
+
+<h3>1-7天</h3>
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-date">2026-08-19~22</div>
+    <div class="tl-text">FOMC会议纪要发布（7月会议）<br>
+    <strong>预期：</strong>详细披露3位异议委员的理由<br>
+    <strong>Bullish Surprise：</strong>纪要显示多数委员倾向降息<br>
+    <strong>Bearish Surprise：</strong>纪要显示加息讨论比预期更严肃<br>
+    <strong>影响：</strong>高</div>
   </div>
-  <div class="prob-bar" id="probBar">
-    <div class="bull-seg" data-width="20%"></div>
-    <div class="base-seg" data-width="50%"></div>
-    <div class="bear-seg" data-width="30%"></div>
-  </div>
-  <div class="scenario-grid">
-    <div class="scenario bull">
-      <div class="prob-label">BULL</div>
-      <div class="prob">20%</div>
-      <div class="range">$4,500-$4,900</div>
-      <div class="trigger">Fed放弃加息 + 中东再升级 + 北美ETF大规模流入</div>
-    </div>
-    <div class="scenario base">
-      <div class="prob-label">BASE</div>
-      <div class="prob">50%</div>
-      <div class="range">$4,200-$4,400</div>
-      <div class="trigger">Fed维持不动 + 中东不升级 + 央行持续购金 + 通胀缓慢回落</div>
-    </div>
-    <div class="scenario bear">
-      <div class="prob-label">BEAR</div>
-      <div class="prob">30%</div>
-      <div class="range">$3,900-$4,150</div>
-      <div class="trigger">Fed实际加息 + CPI加速 + 中东全面停火 + ETF转流出</div>
-    </div>
+  <div class="tl-item">
+    <div class="tl-date">2026-08-20~22</div>
+    <div class="tl-text">初请失业金人数（周度）<br>
+    <strong>预期：</strong>关注是否出现跳升<br>
+    <strong>Bullish Surprise：</strong>初请大幅跳升→衰退担忧→利好黄金<br>
+    <strong>Bearish Surprise：</strong>初请回落→经济韧性→利空黄金<br>
+    <strong>影响：</strong>中</div>
   </div>
 </div>
 
-<!-- ===== RISK / REWARD VISUAL ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(255,167,38,0.15); color: #ffa726;">⚖</span>
-    Risk / Reward
+<h3>1-4周</h3>
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-date">2026-08-29</div>
+    <div class="tl-text">核心PCE物价指数（7月）<br>
+    <strong>预期：</strong>~3.0% YoY（从6月3.3%回落）<br>
+    <strong>Bullish Surprise：</strong><2.8%→降息预期升温→利好黄金<br>
+    <strong>Bearish Surprise：</strong>>3.5%→加息预期升温→利空黄金<br>
+    <strong>影响：</strong>高</div>
   </div>
-  <div class="rr-visual">
-    <div class="rr-bar">
-      <div class="rr-segment rr-down" style="width: 32%;">-4.7%<br><small>$4,150</small></div>
-      <div class="rr-segment rr-current">$4,354</div>
-      <div class="rr-segment rr-up" style="width: 22%;">+3.3%<br><small>$4,500</small></div>
-    </div>
-    <div class="rr-label">下行空间 vs 上行空间</div>
-    <div class="rr-verdict neutral-v">R/R = 0.71:1 不理想 · 不建议交易</div>
-  </div>
-</div>
-
-<!-- ===== EXPECTATION GAP ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(156,39,176,0.15); color: #ce93d8;">◇</span>
-    预期差分析
-  </div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-    <div style="background: rgba(76,175,80,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #4caf50;">
-      <div style="font-size: 10px; color: #4caf50; font-weight: 700; margin-bottom: 4px;">正向预期差</div>
-      <div style="font-size: 12px;">北美ETF仅$71M流入，若Fed转鸽将成最大边际买盘。Goldman仍给$4,900目标</div>
-    </div>
-    <div style="background: rgba(239,83,80,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #ef5350;">
-      <div style="font-size: 10px; color: #ef5350; font-weight: 700; margin-bottom: 4px;">负向预期差</div>
-      <div style="font-size: 12px;">市场可能低估Fed加息概率。CPI 3.4%+Warsh鹰派=加息不止1次的风险</div>
-    </div>
-    <div style="background: rgba(33,150,243,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #2196f3;">
-      <div style="font-size: 10px; color: #2196f3; font-weight: 700; margin-bottom: 4px;">隐藏预期差</div>
-      <div style="font-size: 12px;">PBOC 21月连增+全球央行Q1购244吨。若央行加速购金，将颠覆当前供需平衡</div>
-    </div>
-    <div style="background: rgba(255,167,38,0.08); border-radius: 8px; padding: 10px; border-left: 3px solid #ffa726;">
-      <div style="font-size: 10px; color: #ffa726; font-weight: 700; margin-bottom: 4px;">反转风险</div>
-      <div style="font-size: 12px;">中东再升级 → 避险溢价快速回归$50-100 → 黄金V型反弹至$4,500+</div>
-    </div>
+  <div class="tl-item">
+    <div class="tl-date">2026-09 中旬</div>
+    <div class="tl-text">CFTC持仓报告（周度累积）<br>
+    <strong>预期：</strong>净多头可能继续回落<br>
+    <strong>影响：</strong>中</div>
   </div>
 </div>
 
-<!-- ===== CATALYST TIMELINE ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(33,150,136,0.15); color: #26a69a;">▸</span>
-    催化剂时间线
+<h3>1-3个月</h3>
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-date">2026-09-16~17（预计）</div>
+    <div class="tl-text">FOMC利率决议<br>
+    <strong>预期：</strong>64%维持，36%加息<br>
+    <strong>Bullish Surprise：</strong>意外降息（极低概率）<br>
+    <strong>Bearish Surprise：</strong>加息+鹰派前瞻指引<br>
+    <strong>影响：</strong>极高</div>
   </div>
-  <div class="catalyst-timeline" id="timeline">
-    <div class="timeline-line-fill" id="timelineFill"></div>
-    <div class="catalyst-item">
-      <div class="catalyst-dot high active"></div>
-      <div class="catalyst-period">近期</div>
-      <div class="catalyst-name">Warsh Fed 下一步信号</div>
-      <div class="catalyst-impact">影响: 极高 — 任何加息/维持/降息的信号都将引发大幅波动</div>
-    </div>
-    <div class="catalyst-item">
-      <div class="catalyst-dot high active"></div>
-      <div class="catalyst-period">持续</div>
-      <div class="catalyst-name">伊朗局势 · 中东停火进展</div>
-      <div class="catalyst-impact">影响: 高 — 全面停火=地缘溢价清零，再升级=溢价回归</div>
-    </div>
-    <div class="catalyst-item">
-      <div class="catalyst-dot medium"></div>
-      <div class="catalyst-period">9月</div>
-      <div class="catalyst-name">下一次FOMC会议</div>
-      <div class="catalyst-impact">影响: 极高 — 是否加息将决定黄金中期方向</div>
-    </div>
-    <div class="catalyst-item">
-      <div class="catalyst-dot medium"></div>
-      <div class="catalyst-period">每月</div>
-      <div class="catalyst-name">CPI / NFP / 零售数据</div>
-      <div class="catalyst-impact">影响: 中高 — 通胀和就业数据直接影响Fed决策</div>
-    </div>
-    <div class="catalyst-item">
-      <div class="catalyst-dot low"></div>
-      <div class="catalyst-period">每月7日</div>
-      <div class="catalyst-name">PBOC 黄金储备数据</div>
-      <div class="catalyst-impact">影响: 中 — 若暂停购金将移除长期底盘支撑</div>
-    </div>
+  <div class="tl-item">
+    <div class="tl-date">2026-09~10</div>
+    <div class="tl-text">NFP（8月/9月）+ CPI（8月/9月）<br>
+    <strong>预期：</strong>就业继续疲软，通胀温和<br>
+    <strong>Bullish Surprise：</strong>NFP持续负增长+CPI跌破2.5%→Fed被迫转鸽<br>
+    <strong>Bearish Surprise：</strong>NFP反弹+CPI回升→加息预期巩固<br>
+    <strong>影响：</strong>高</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-date">2026-Q3/Q4</div>
+    <div class="tl-text">央行购金数据（季度）+ 中东局势演变<br>
+    <strong>影响：</strong>高</div>
   </div>
 </div>
 
-<!-- ===== MONITORING DASHBOARD ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(0,150,136,0.15); color: #26a69a;">◉</span>
-    监控面板
+<!-- ========== 16. INVALIDATION ========== -->
+<h2>16. 交易逻辑失效条件</h2>
+
+<table class="data-table">
+<tr><th>类别</th><th>失效条件</th><th>行动</th></tr>
+<tr><td>宏观失效</td><td>10Y实际收益率突破2.5%并维持2周以上</td><td>从Slight Bullish下调至Neutral</td></tr>
+<tr><td>资金失效</td><td>全球黄金ETF连续4周净流出，累计>30t</td><td>从Slight Bullish下调至Neutral</td></tr>
+<tr><td>技术失效</td><td>黄金跌破$4,200并收盘确认</td><td>转为Bearish</td></tr>
+<tr><td>叙事失效</td><td>PBOC连续2个月暂停购金</td><td>长期牛市逻辑动摇，转为Neutral</td></tr>
+<tr><td>地缘失效</td><td>中东全面停火+伊朗协议达成</td><td>地缘溢价压缩$100-200，但结构性因素仍在</td></tr>
+<tr><td>政策失效</td><td>Fed加息至4.0%+并明确鹰派前瞻指引</td><td>转为Bearish</td></tr>
+</table>
+
+<!-- ========== 17. DASHBOARD ========== -->
+<h2>17. 黄金交易监控 Dashboard</h2>
+
+<div class="dashboard">
+  <div class="card">
+    <div class="card-label">XAUUSD</div>
+    <div class="card-value">$4,344</div>
+    <div class="card-delta neutral">震荡 ●</div>
   </div>
-  <div class="monitor-grid">
-    <div class="monitor-item">
-      <span class="monitor-name">黄金</span>
-      <span class="monitor-val">$4,354</span>
-      <div class="monitor-signal neutral-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">DXY</span>
-      <span class="monitor-val">99.67</span>
-      <div class="monitor-signal neutral-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">10Y Yield</span>
-      <span class="monitor-val">4.71%</span>
-      <div class="monitor-signal bear-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">Fed 利率</span>
-      <span class="monitor-val">3.50-3.75%</span>
-      <div class="monitor-signal bear-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">CPI</span>
-      <span class="monitor-val">3.4%</span>
-      <div class="monitor-signal bear-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">Brent</span>
-      <span class="monitor-val">$91.0</span>
-      <div class="monitor-signal neutral-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">VIX</span>
-      <span class="monitor-val">14.55</span>
-      <div class="monitor-signal neutral-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">ETF Flow</span>
-      <span class="monitor-val">+$3B</span>
-      <div class="monitor-signal bull-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">PBOC</span>
-      <span class="monitor-val">21月连增</span>
-      <div class="monitor-signal bull-dot"></div>
-    </div>
-    <div class="monitor-item">
-      <span class="monitor-name">CFTC Net</span>
-      <span class="monitor-val">137.7K</span>
-      <div class="monitor-signal neutral-dot"></div>
-    </div>
+  <div class="card">
+    <div class="card-label">DXY</div>
+    <div class="card-value">99.85</div>
+    <div class="card-delta up">弱势利好 ↑</div>
   </div>
-  <div style="margin-top: 10px; font-size: 11px; color: #888;">
-    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4caf50; margin-right: 4px;"></span>利多
-    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ffa726; margin-right: 4px; margin-left: 10px;"></span>中性
-    <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef5350; margin-right: 4px; margin-left: 10px;"></span>利空
+  <div class="card">
+    <div class="card-label">10Y Yield</div>
+    <div class="card-value">4.68%</div>
+    <div class="card-delta down">高位逆风 ↓</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Real Yield</div>
+    <div class="card-value">~2.0%</div>
+    <div class="card-delta down">压制黄金 ↓</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Brent</div>
+    <div class="card-value">$87.11</div>
+    <div class="card-delta neutral">地缘溢价 ●</div>
+  </div>
+  <div class="card">
+    <div class="card-label">VIX</div>
+    <div class="card-value">14.2</div>
+    <div class="card-delta neutral">2026低点 ●</div>
   </div>
 </div>
 
-<!-- ===== MACRO HEATMAP ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(233,69,96,0.15); color: #e94560;">▦</span>
-    宏观信号热力图
-  </div>
-  <div class="heatmap-row">
-    <div class="heatmap-cell strong-bear" style="flex: 2;">Fed鹰派(加息预期)</div>
-    <div class="heatmap-cell bear">CPI 3.4%</div>
-  </div>
-  <div class="heatmap-row">
-    <div class="heatmap-cell bear">地缘溢价压缩</div>
-    <div class="heatmap-cell neutral" style="flex: 2;">10Y高位4.71%</div>
-  </div>
-  <div class="heatmap-row">
-    <div class="heatmap-cell bull">PBOC 21月</div>
-    <div class="heatmap-cell bull">ETF +$3B</div>
-    <div class="heatmap-cell neutral">CFTC 137K</div>
-  </div>
-  <div style="margin-top: 8px; font-size: 11px; color: #888; text-align: center;">
-    四维确认: 价格✗(回调) 宏观✗(Fed鹰) 资金✓(ETF+央行) 仓位✓(未极端) = <span style="color: #ef5350;">信号冲突，不宜交易</span>
-  </div>
+<table class="data-table">
+<tr><th>指标</th><th>当前状态</th><th>信号</th><th>重要程度</th></tr>
+<tr><td>黄金价格</td><td>$4,344 箱体震荡</td><td class="neutral">Neutral</td><td><strong>High</strong></td></tr>
+<tr><td>DXY</td><td>99.85 跌破100</td><td class="up">Slight Bullish</td><td><strong>High</strong></td></tr>
+<tr><td>10Y Yield</td><td>4.68% 高位</td><td class="down">Bearish</td><td>Medium</td></tr>
+<tr><td>10Y Real Yield</td><td>~2.0% 高位</td><td class="down">Bearish</td><td><strong>High</strong></td></tr>
+<tr><td>Brent</td><td>$87.11 地缘溢价</td><td class="neutral">Mixed</td><td>Medium</td></tr>
+<tr><td>CPI (Jul)</td><td>3.4% YoY 回落中</td><td class="up">Slight Bullish</td><td>Medium</td></tr>
+<tr><td>NFP (Jul)</td><td>-23K 负增长</td><td class="up">Bullish (中期)</td><td><strong>High</strong></td></tr>
+<tr><td>Fed Funds Futures</td><td>64% hold / 36% hike</td><td class="neutral">Mixed</td><td><strong>High</strong></td></tr>
+<tr><td>Gold ETF Flow</td><td>+23t/月 温和流入</td><td class="up">Slight Bullish</td><td><strong>High</strong></td></tr>
+<tr><td>CFTC Positioning</td><td>~103K 净多头回落</td><td class="neutral">Neutral</td><td>Medium</td></tr>
+<tr><td>Central Bank Buying</td><td>PBOC 21月连买</td><td class="up">Bullish</td><td><strong>High</strong></td></tr>
+<tr><td>地缘政治</td><td>中东紧张，伊朗局势</td><td class="up">Slight Bullish</td><td>Medium</td></tr>
+<tr><td>VIX</td><td>14.2 极低</td><td class="neutral">Neutral</td><td>Low</td></tr>
+<tr><td>Q2 GDP</td><td>1.5% 放缓</td><td class="up">Slight Bullish</td><td>Medium</td></tr>
+<tr><td>中国ETF资金流</td><td>8月83亿元 大幅流入</td><td class="up">Bullish</td><td>Medium</td></tr>
+</table>
+
+<div class="insight-box">
+  <p><strong>当前最重要的3个指标（不按平均权重）：</strong></p>
+  <p>1. <strong>10Y实际收益率（~2.0%）</strong>— 这是当前黄金定价的核心锚。如果实债率转向下行，黄金将获得最强推动力；如果继续上行，黄金将持续承压。</p>
+  <p>2. <strong>Fed 9月决议预期（36%加息概率）</strong>— 这是短期内最大的方向性催化剂。加息 vs 维持将决定黄金是突破$4,500还是跌破$4,200。</p>
+  <p>3. <strong>NFP趋势（-23K）</strong>— 如果就业持续恶化，将改变整个宏观叙事，迫使Fed转向，这是中期最重要的变量。</p>
 </div>
 
-<!-- ===== NARRATIVE & REFLEXIVITY ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(156,39,176,0.15); color: #ce93d8;">∞</span>
-    叙事 · 反身性 · 溢价
-  </div>
-  <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-    <div style="background: #12121f; border-radius: 8px; padding: 12px;">
-      <div style="font-size: 11px; color: #ce93d8; font-weight: 700; margin-bottom: 4px;">叙事风险</div>
-      <div style="font-size: 12px;">市场叙事正从"黄金超级周期"切换至"Fed加息周期"。<span style="color: #ef5350;">旧叙事失效中</span>。Goldman虽维持$4,900目标但已下调。需观察Warsh是否实际推动加息。</div>
-    </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 12px;">
-      <div style="font-size: 11px; color: #ce93d8; font-weight: 700; margin-bottom: 4px;">反身性</div>
-      <div style="font-size: 12px;">
-        <span style="color: #ef5350; font-weight: 700;">Negative Reflexivity 初现</span> — 黄金回调 → 地缘溢价压缩 → 获利盘了结 → 继续回调。但若央行/ETF加速买入可打断此循环。<span style="color: #ffa726;">关注下周ETF流入数据</span>。
-      </div>
-    </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 12px;">
-      <div style="font-size: 11px; color: #ce93d8; font-weight: 700; margin-bottom: 4px;">风险溢价</div>
-      <div style="font-size: 12px;">地缘溢价<span style="color: #4caf50;">大幅压缩中</span>。加息风险溢价开始计入。央行结构性溢价持续。总溢价<span style="color: #ffa726;">中性</span>，不构成泡沫但也不支持追涨。</div>
-    </div>
-  </div>
+<!-- ========== 18. FINAL JUDGMENT ========== -->
+<h2>18. 最终判断</h2>
+
+<table class="data-table">
+<tr><th>周期</th><th>评级</th><th>逻辑</th></tr>
+<tr><td>Long-term（长期）</td><td class="up"><strong>Bullish</strong></td><td>央行购金+去美元化+全球财政风险 = 结构性牛市基础仍在</td></tr>
+<tr><td>1-3 Months</td><td class="neutral"><strong>Neutral to Slight Bullish</strong></td><td>Fed决议+实债率方向不明确，箱体震荡为主</td></tr>
+<tr><td>1-4 Weeks</td><td class="neutral"><strong>Neutral</strong></td><td>缺乏短期催化剂，$4,300-4,500箱体运行</td></tr>
+<tr><td>Current Trading Bias</td><td><span class="rating-badge rating-neutral" style="font-size:0.9em;padding:6px 20px">SLIGHT BULLISH</span></td><td>结构性利好 vs 周期性逆风，偏向看涨但需等待确认</td></tr>
+</table>
+
+<div class="insight-box" style="border-color:#ffd700;margin-top:24px">
+  <h3 style="text-align:center;color:#ffd700">最终一句话</h3>
+  <p style="text-align:center;font-size:1.1em;color:#fff;margin-top:12px">
+    "现在黄金最值得交易的，不是<strong>追涨</strong>，而是<strong>等待实际收益率和Fed政策的明确信号后，在$4,200附近布局中期多头</strong>。"
+  </p>
 </div>
 
-<!-- ===== INVALIDATION ===== -->
-<div class="card animate-on-scroll">
-  <div class="card-title">
-    <span class="icon" style="background: rgba(239,83,80,0.15); color: #ef5350;">✗</span>
-    逻辑失效条件
-  </div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ef5350;">
-      <div style="font-size: 10px; color: #ef5350; font-weight: 700;">转Bullish条件</div>
-      <div style="font-size: 11px; margin-top: 4px;">Warsh放弃加息 / CPI回落至3%以下 / 中东再升级 / 北美ETF月流入>$2B</div>
-    </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ffa726;">
-      <div style="font-size: 10px; color: #ffa726; font-weight: 700;">维持Neutral条件</div>
-      <div style="font-size: 11px; margin-top: 4px;">Fed维持不动 / 中东不升级不降级 / 央行持续购金 / 通胀缓慢回落</div>
-    </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #42a5f5;">
-      <div style="font-size: 10px; color: #42a5f5; font-weight: 700;">转Bearish条件</div>
-      <div style="font-size: 11px; margin-top: 4px;">Fed实际加息 / 10Y突破5% / ETF连续净流出 / PBOC暂停 / 中东全面停火</div>
-    </div>
-    <div style="background: #12121f; border-radius: 8px; padding: 10px; border-left: 3px solid #ce93d8;">
-      <div style="font-size: 10px; color: #ce93d8; font-weight: 700;">黑天鹅</div>
-      <div style="font-size: 11px; margin-top: 4px;">Warsh突然辞职 / 美国财政危机 / 霍尔木兹海峡再中断</div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== FINAL VERDICT ===== -->
-<div class="verdict-card animate-on-scroll">
-  <div class="verdict-rating">
-    <span class="verdict-badge neutral">NEUTRAL</span>
-    <span style="font-size: 13px; color: #ccc;">多空冲突 · 观望为主</span>
-  </div>
-  <div class="verdict-strategy">
-    <strong>策略：</strong>不追涨、不追空。等待Fed政策方向明确后再行动。若Fed明确放弃加息 → 转Bullish，在$4,200-$4,300布局多单。若Fed实际加息 → 转Bearish，减仓至$4,000附近再评估。
-  </div>
-  <div class="verdict-oneliner">
-    黄金正处于多空激烈交锋的十字路口。利空面——Warsh Fed鹰派（7月FOMC三人投票加息，点阵图预期2026年加息1次）、CPI 3.4%远超目标、伊朗停火后地缘溢价压缩——正在压制价格。利多面——PBOC连续21月购金、全球ETF 7月流入$3B、北美资金远未拥挤——提供底盘支撑。R/R 0.71:1不理想，信号冲突时最好的策略就是不交易。
-  </div>
-</div>
-
-</div>
+<!-- ========== DATA SOURCES ========== -->
+<h2>数据来源</h2>
+<table class="data-table">
+<tr><th>数据</th><th>来源</th><th>日期</th></tr>
+<tr><td>XAUUSD $4,344</td><td>cngold.org</td><td>2026-08-18</td></tr>
+<tr><td>DXY 99.85</td><td>cngold.org</td><td>2026-08-12</td></tr>
+<tr><td>10Y Yield 4.68%</td><td>Trading Economics</td><td>2026-08-18</td></tr>
+<tr><td>2Y Yield 4.18%</td><td>Trading Economics</td><td>2026-08-18</td></tr>
+<tr><td>Fed Rate 3.50-3.75%</td><td>Trading Economics / CBS News</td><td>2026-07 决议</td></tr>
+<tr><td>CPI 3.4% / Core 2.5%</td><td>Sina Finance / BLS</td><td>2026-07</td></tr>
+<tr><td>Core PCE 3.3%</td><td>Futunn / BEA</td><td>2026-06</td></tr>
+<tr><td>NFP -23K / UE 4.1%</td><td>Straits Times / BLS</td><td>2026-07</td></tr>
+<tr><td>PBOC 76.08M oz</td><td>China Daily / PBOC</td><td>2026-07末</td></tr>
+<tr><td>Gold ETF +23t</td><td>World Gold Council</td><td>2026-07</td></tr>
+<tr><td>中国ETF 83.46亿元</td><td>Sina Finance / 东方财富</td><td>至2026-08-14</td></tr>
+<tr><td>CFTC ~103K合约</td><td>CFTC / fx678</td><td>截至2026-06-09</td></tr>
+<tr><td>WTI $82.53</td><td>cngold.org</td><td>2026-08-18</td></tr>
+<tr><td>Brent $87.11</td><td>cngold.org</td><td>2026-08-18</td></tr>
+<tr><td>VIX 14.2</td><td>Sina Finance</td><td>2026-08-17</td></tr>
+<tr><td>Q2 GDP 1.5%</td><td>Empower.com / BEA</td><td>2026-Q2</td></tr>
+<tr><td>9月Fed概率</td><td>Empower.com / 联邦基金期货</td><td>2026-08-12</td></tr>
+<tr><td>Term Premium ~0.5%</td><td>Empower.com</td><td>2026-08</td></tr>
+<tr><td>ATH $5,506</td><td>jiemian.com / 世界黄金协会</td><td>2026-01</td></tr>
+<tr><td>全球央行Q2购金289t</td><td>World Gold Council / JRJ</td><td>2026-Q2</td></tr>
+</table>
 
 <div class="footer">
-  数据来源: Trading Economics (8/18收盘), World Gold Council (8/14, 8/6), Federal Reserve (FOMC 7/29, 6/17), BLS (CPI 8/12), CFTC (8/11), Reuters, CNBC<br>
-  数据截止: 2026-08-18 | 报告生成: 2026-08-19<br>
-  免责声明: 本报告仅供研究参考，不构成投资建议
+  Gold XAUUSD Research Report | Generated 2026-08-19<br>
+  本报告仅供研究参考，不构成投资建议。所有数据均来自公开来源，可能存在滞后或误差。<br>
+  推断值已明确标注，不与事实数据混淆。
 </div>
 
-<script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      const bars = entry.target.querySelectorAll('.compare-bar-fill[data-width]');
-      bars.forEach((bar, i) => {
-        setTimeout(() => { bar.style.width = bar.dataset.width; const delta = bar.closest('.compare-item').querySelector('.compare-delta'); if (delta) setTimeout(() => delta.classList.add('show'), 600); }, i * 150);
-      });
-      const probSegs = entry.target.querySelectorAll('.prob-bar [data-width]');
-      probSegs.forEach(seg => { setTimeout(() => { seg.style.width = seg.dataset.width; }, 200); });
-      const items = entry.target.querySelectorAll('.catalyst-item');
-      items.forEach((item, i) => { setTimeout(() => item.classList.add('visible'), i * 250); });
-      const fill = entry.target.querySelector('.timeline-line-fill');
-      if (fill) setTimeout(() => { fill.style.height = '100%'; }, 100);
-    }
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-</script>
-
+</div>
 </body>
 </html>
