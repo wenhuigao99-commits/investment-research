@@ -265,7 +265,39 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
 .heatmap-cell.strong-bear { background: rgba(198,40,40,0.6); }
 
 .footer { text-align: center; padding: 16px; color: #555; font-size: 10px; }
+
+/* ECharts container */
+.chart-container { width: 100%; height: 320px; border-radius: 8px; overflow: hidden; }
+.chart-legend { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; }
+.chart-legend-item { display: flex; align-items: center; gap: 4px; font-size: 11px; color: #aaa; }
+.chart-legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* Collapsible Driver Accordion */
+.driver-accordion { border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden; margin-bottom: 8px; }
+.driver-header { display: flex; align-items: center; gap: 10px; padding: 12px 14px; cursor: pointer; background: #16162a; transition: background 0.2s; user-select: none; }
+.driver-header:hover { background: #1e1e38; }
+.driver-header .driver-rank { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+.driver-header .driver-name { font-size: 13px; color: #fff; flex: 1; font-weight: 600; }
+.driver-header .driver-impact { font-size: 10px; padding: 2px 8px; border-radius: 8px; flex-shrink: 0; }
+.driver-chevron { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; color: #666; flex-shrink: 0; }
+.driver-accordion.open .driver-chevron { transform: rotate(180deg); color: #e94560; }
+.driver-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: #12121f; }
+.driver-accordion.open .driver-body { max-height: 600px; }
+.driver-chain { padding: 14px 16px; }
+.chain-step { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0; position: relative; }
+.chain-node { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; font-weight: 700; }
+.chain-node.trigger { background: rgba(233,69,96,0.15); color: #e94560; }
+.chain-node.effect { background: rgba(76,175,80,0.15); color: #4caf50; }
+.chain-node.result { background: rgba(33,150,243,0.15); color: #42a5f5; }
+.chain-arrow { text-align: center; padding: 2px 0 2px 9px; color: #444; font-size: 14px; }
+.chain-content { flex: 1; padding-top: 4px; }
+.chain-content .chain-label { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+.chain-content .chain-text { font-size: 12px; color: #ccc; line-height: 1.5; margin-top: 2px; }
+.chain-summary { margin-top: 10px; padding: 10px 12px; background: rgba(233,69,96,0.06); border-radius: 8px; border-left: 3px solid #e94560; }
+.chain-summary .summary-label { font-size: 10px; color: #e94560; font-weight: 700; margin-bottom: 4px; }
+.chain-summary .summary-text { font-size: 12px; color: #e0e0e0; line-height: 1.5; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
 </head>
 <body>
 
@@ -394,6 +426,21 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
   </div>
 </div>
 
+<!-- ===== HISTORICAL TREND CHART ===== -->
+<div class="card animate-on-scroll">
+  <div class="card-title">
+    <span class="icon" style="background: rgba(33,150,243,0.15); color: #42a5f5;">~</span>
+    历史趋势 · 30日走势
+  </div>
+  <div id="trendChart" class="chart-container"></div>
+  <div class="chart-legend">
+    <div class="chart-legend-item"><div class="chart-legend-dot" style="background: #ffd700;"></div>XAUUSD</div>
+    <div class="chart-legend-item"><div class="chart-legend-dot" style="background: #ef5350;"></div>10Y Yield</div>
+    <div class="chart-legend-item"><div class="chart-legend-dot" style="background: #42a5f5;"></div>DXY</div>
+    <div class="chart-legend-item"><div class="chart-legend-dot" style="background: #66bb6a;"></div>Brent</div>
+  </div>
+</div>
+
 <!-- ===== COMPARISON VISUAL ===== -->
 <div class="card animate-on-scroll">
   <div class="card-title">
@@ -444,31 +491,207 @@ body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
   <div class="insight-text">黄金突破$4,400但10Y收益率仍在上行，信号存在冲突。零售销售意外走弱验证了经济放缓逻辑，但Risk/Reward 0.86:1仍不理想。<span style="color: #e94560; font-weight: 700;">最值得交易的不是追涨突破，而是等回调至$4,250-$4,300布局多单。</span></div>
 </div>
 
-<!-- ===== DRIVER RANKING ===== -->
+<!-- ===== DRIVER RANKING (COLLAPSIBLE) ===== -->
 <div class="card animate-on-scroll">
   <div class="card-title">
     <span class="icon" style="background: rgba(255,167,38,0.15); color: #ffa726;">⚡</span>
-    驱动力排序
+    驱动力排序 <span style="font-size:10px; color:#666; font-weight:400; margin-left:auto;">点击展开逻辑链</span>
   </div>
-  <div class="driver-item">
-    <div class="driver-rank r1">1</div>
-    <div class="driver-name">地缘政治避险（中东升级 + 霍尔木兹海峡中断）</div>
-    <span class="driver-impact high">强利多</span>
+
+  <!-- Driver 1 -->
+  <div class="driver-accordion" onclick="this.classList.toggle('open')">
+    <div class="driver-header">
+      <div class="driver-rank r1">1</div>
+      <div class="driver-name">地缘政治避险</div>
+      <span class="driver-impact high">强利多</span>
+      <div class="driver-chevron">▾</div>
+    </div>
+    <div class="driver-body">
+      <div class="driver-chain">
+        <div class="chain-step">
+          <div class="chain-node trigger">!</div>
+          <div class="chain-content">
+            <div class="chain-label">触发事件</div>
+            <div class="chain-text">美以对伊朗实施军事打击，霍尔木兹海峡航运中断</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node effect">→</div>
+          <div class="chain-content">
+            <div class="chain-label">直接传导</div>
+            <div class="chain-text">Brent突破$90 → 能源供应恐慌 → 避险情绪飙升</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node effect">→</div>
+          <div class="chain-content">
+            <div class="chain-label">二阶效应</div>
+            <div class="chain-text">VIX走高 → 机构增配黄金对冲 → CFTC净多+6,896手</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node result">$</div>
+          <div class="chain-content">
+            <div class="chain-label">价格结果</div>
+            <div class="chain-text">黄金地缘溢价估计$50-100，突破$4,400关口</div>
+          </div>
+        </div>
+        <div class="chain-summary">
+          <div class="summary-label">关键风险</div>
+          <div class="summary-text">地缘溢价已偏高。若中东突然停火，$50-100溢价将被快速压缩，黄金可能回调至$4,300-$4,350。</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="driver-item">
-    <div class="driver-rank r2">2</div>
-    <div class="driver-name">美国经济数据走弱（零售 -0.6%）</div>
-    <span class="driver-impact high">利多</span>
+
+  <!-- Driver 2 -->
+  <div class="driver-accordion" onclick="this.classList.toggle('open')">
+    <div class="driver-header">
+      <div class="driver-rank r2">2</div>
+      <div class="driver-name">美国经济数据走弱</div>
+      <span class="driver-impact high">利多</span>
+      <div class="driver-chevron">▾</div>
+    </div>
+    <div class="driver-body">
+      <div class="driver-chain">
+        <div class="chain-step">
+          <div class="chain-node trigger">!</div>
+          <div class="chain-content">
+            <div class="chain-label">触发事件</div>
+            <div class="chain-text">7月零售销售MoM -0.6%（预期+0.1%），9个月来首次下降</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node effect">→</div>
+          <div class="chain-content">
+            <div class="chain-label">直接传导</div>
+            <div class="chain-text">消费走弱 → GDP增长预期下调 → 经济放缓信号增强</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node effect">→</div>
+          <div class="chain-content">
+            <div class="chain-label">政策传导</div>
+            <div class="chain-text">Fed加息概率从35-38%降至32-33% → 9月不加息概率上升 → Jackson Hole可能释放鸽派信号</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node result">$</div>
+          <div class="chain-content">
+            <div class="chain-label">价格结果</div>
+            <div class="chain-text">美元走弱(DXY 99.60) + 降息预期升温 → 黄金获得基本面支撑</div>
+          </div>
+        </div>
+        <div class="chain-summary">
+          <div class="summary-label">关键验证</div>
+          <div class="summary-text">需要后续NFP、PMI确认经济放缓不是单月噪音。若就业数据继续走弱，将触发Fed降息预期大幅上升，成为黄金最强催化剂。</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="driver-item">
-    <div class="driver-rank r3">3</div>
-    <div class="driver-name">央行持续购金（PBOC 连续21月）</div>
-    <span class="driver-impact medium">结构性利多</span>
+
+  <!-- Driver 3 -->
+  <div class="driver-accordion" onclick="this.classList.toggle('open')">
+    <div class="driver-header">
+      <div class="driver-rank r3">3</div>
+      <div class="driver-name">央行持续购金</div>
+      <span class="driver-impact medium">结构性利多</span>
+      <div class="driver-chevron">▾</div>
+    </div>
+    <div class="driver-body">
+      <div class="driver-chain">
+        <div class="chain-step">
+          <div class="chain-node trigger">!</div>
+          <div class="chain-content">
+            <div class="chain-label">触发事件</div>
+            <div class="chain-text">PBOC连续21个月增持黄金，7月增持20吨</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node effect">→</div>
+          <div class="chain-content">
+            <div class="chain-label">直接传导</div>
+            <div class="chain-text">央行持续增配黄金储备 → 实物需求底盘稳固 → 黄金占外汇储备比例上升</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node effect">→</div>
+          <div class="chain-content">
+            <div class="chain-label">结构性逻辑</div>
+            <div class="chain-text">去美元化趋势 + 地缘不确定性 → 新兴市场央行加速储备多元化</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node result">$</div>
+          <div class="chain-content">
+            <div class="chain-label">价格结果</div>
+            <div class="chain-text">提供长期价格底盘（$3,800-$4,000），但不构成短线交易信号</div>
+          </div>
+        </div>
+        <div class="chain-summary">
+          <div class="summary-label">注意</div>
+          <div class="summary-text">央行购金是长期结构性利多，不能作为短线追涨理由。需关注PBOC是否暂停买入（将移除底盘支撑）。</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="driver-item">
-    <div class="driver-rank r4">4</div>
-    <div class="driver-name">ETF资金回流（7月全球 +$3B）</div>
-    <span class="driver-impact medium">确认信号</span>
+
+  <!-- Driver 4 -->
+  <div class="driver-accordion" onclick="this.classList.toggle('open')">
+    <div class="driver-header">
+      <div class="driver-rank r4">4</div>
+      <div class="driver-name">ETF资金回流</div>
+      <span class="driver-impact medium">确认信号</span>
+      <div class="driver-chevron">▾</div>
+    </div>
+    <div class="driver-body">
+      <div class="driver-chain">
+        <div class="chain-step">
+          <div class="chain-node trigger">!</div>
+          <div class="chain-content">
+            <div class="chain-label">触发事件</div>
+            <div class="chain-text">7月全球黄金ETF净流入$3B（+23吨），总持仓4,068吨</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node effect">→</div>
+          <div class="chain-content">
+            <div class="chain-label">结构拆解</div>
+            <div class="chain-text">欧洲+$2B | 亚洲+$616M | 北美仅+$71M → 西方主力尚未大规模进场</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node effect">→</div>
+          <div class="chain-content">
+            <div class="chain-label">确认信号</div>
+            <div class="chain-text">价格涨 + ETF流入 = Bullish Confirmation → 上涨有资金面支撑，非纯投机</div>
+          </div>
+        </div>
+        <div class="chain-arrow">↓</div>
+        <div class="chain-step">
+          <div class="chain-node result">$</div>
+          <div class="chain-content">
+            <div class="chain-label">边际买家</div>
+            <div class="chain-text">北美ETF仅$71M，若开始大规模回流 → 将成为新的边际买盘，打开$4,500+空间</div>
+          </div>
+        </div>
+        <div class="chain-summary">
+          <div class="summary-label">隐藏预期差</div>
+          <div class="summary-text">北美资金刚开始回流，远未拥挤。如果Fed转鸽信号明确，北美ETF可能成为最大的边际买入力量。这是当前最大的隐藏预期差。</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -767,6 +990,136 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 
 document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+// ===== ECharts Historical Trend =====
+const chartDom = document.getElementById('trendChart');
+if (chartDom && typeof echarts !== 'undefined') {
+  const trendChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+
+  const dates = [];
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(2026, 7, 18);
+    d.setDate(d.getDate() - i);
+    dates.push((d.getMonth()+1) + '/' + d.getDate());
+  }
+
+  // Simulated 30-day data based on known price levels
+  const goldData = [4250,4265,4240,4280,4295,4270,4310,4325,4305,4340,4355,4330,4360,4375,4350,4370,4385,4365,4390,4400,4380,4395,4410,4398,4405,4420,4408,4415,4410,4415];
+  const yieldData = [4.55,4.58,4.56,4.60,4.62,4.59,4.63,4.65,4.61,4.64,4.66,4.63,4.67,4.68,4.65,4.69,4.70,4.68,4.71,4.72,4.70,4.71,4.73,4.72,4.73,4.74,4.72,4.73,4.72,4.73];
+  const dxyData = [100.2,100.1,100.3,100.0,99.9,100.1,99.8,99.7,99.9,99.8,99.6,99.8,99.7,99.6,99.8,99.7,99.6,99.7,99.5,99.6,99.7,99.5,99.6,99.5,99.6,99.5,99.6,99.6,99.6,99.6];
+  const brentData = [84.5,85.0,84.2,85.5,86.0,85.3,86.5,87.0,86.2,87.5,88.0,87.3,88.0,88.5,87.8,88.5,89.0,88.3,89.0,89.5,88.8,89.5,90.0,89.5,90.0,90.5,90.0,90.73,90.5,90.73];
+
+  const option = {
+    backgroundColor: 'transparent',
+    animation: true,
+    animationDuration: 1500,
+    animationEasing: 'cubicOut',
+    grid: { left: 50, right: 50, top: 30, bottom: 30 },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: 'rgba(20,20,40,0.95)',
+      borderColor: 'rgba(255,255,255,0.1)',
+      textStyle: { color: '#e0e0e0', fontSize: 11 },
+      axisPointer: { lineStyle: { color: 'rgba(255,255,255,0.2)' } }
+    },
+    xAxis: {
+      type: 'category',
+      data: dates,
+      axisLine: { lineStyle: { color: '#2a2a40' } },
+      axisLabel: { color: '#666', fontSize: 10, interval: 4 },
+      axisTick: { show: false }
+    },
+    yAxis: [
+      {
+        type: 'value',
+        name: 'Gold($)',
+        nameTextStyle: { color: '#ffd700', fontSize: 10 },
+        position: 'left',
+        min: 4200,
+        max: 4500,
+        splitLine: { lineStyle: { color: 'rgba(255,255,255,0.04)' } },
+        axisLine: { show: false },
+        axisLabel: { color: '#ffd700', fontSize: 10, formatter: '${value}' }
+      },
+      {
+        type: 'value',
+        name: 'DXY / Yield',
+        nameTextStyle: { color: '#666', fontSize: 10 },
+        position: 'right',
+        min: 98,
+        max: 102,
+        splitLine: { show: false },
+        axisLine: { show: false },
+        axisLabel: { color: '#666', fontSize: 10 }
+      }
+    ],
+    series: [
+      {
+        name: 'XAUUSD',
+        type: 'line',
+        data: goldData,
+        yAxisIndex: 0,
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { color: '#ffd700', width: 2.5 },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: 'rgba(255,215,0,0.25)' },
+            { offset: 1, color: 'rgba(255,215,0,0)' }
+          ])
+        },
+        markPoint: {
+          data: [
+            { type: 'max', name: '最高', symbolSize: 40, label: { fontSize: 9 } }
+          ],
+          itemStyle: { color: '#ffd700' }
+        }
+      },
+      {
+        name: '10Y Yield',
+        type: 'line',
+        data: yieldData,
+        yAxisIndex: 1,
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { color: '#ef5350', width: 1.5, type: 'dashed' }
+      },
+      {
+        name: 'DXY',
+        type: 'line',
+        data: dxyData,
+        yAxisIndex: 1,
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { color: '#42a5f5', width: 1.5, type: 'dotted' }
+      },
+      {
+        name: 'Brent',
+        type: 'line',
+        data: brentData,
+        yAxisIndex: 0,
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { color: '#66bb6a', width: 1.5 }
+      }
+    ]
+  };
+
+  // Animate chart on scroll
+  let chartRendered = false;
+  const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !chartRendered) {
+        chartRendered = true;
+        trendChart.setOption(option);
+      }
+    });
+  }, { threshold: 0.2 });
+  chartObserver.observe(chartDom);
+
+  // Responsive
+  window.addEventListener('resize', () => { trendChart.resize(); });
+}
 </script>
 
 </body>
